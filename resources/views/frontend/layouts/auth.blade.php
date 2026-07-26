@@ -32,9 +32,13 @@
     <div id="preloader">
         <div class="preloader" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; width: 100vw; margin: 0; left: 0; top: 0;">
             <div class="mb-3">
-                <img src="{{ asset(setting()->logo ? 'uploads/' . setting()->logo : 'frontend/assets/img/logo/logo.png') }}" 
-                     alt="{{ setting()->site_name }}" 
-                     style="max-width: 150px; height: auto;">
+                @if(setting()->logo)
+                    <img src="{{ asset('uploads/' . setting()->logo) }}" 
+                         alt="{{ setting()->site_name }}" 
+                         style="max-width: 150px; height: auto;">
+                @else
+                    <h3 style="color: var(--navy); font-weight: 800;">{{ setting()->site_name ?? 'Cholo Abroad' }}</h3>
+                @endif
             </div>
             <div style="position: relative; width: 50px; height: 50px;">
                 <span></span>
