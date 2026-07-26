@@ -9,7 +9,6 @@
                     </span>
                     <span class="logo-lg">
                         <img src="{{ asset('uploads/' . setting()->logo) }}" alt="" height="40"> 
-                        <span class="logo-txt text-uppercase fw-bold fs-4">{{ setting()->site_name }}</span>
                     </span>
                 </a>
 
@@ -19,7 +18,6 @@
                     </span>
                     <span class="logo-lg">
                         <img src="{{ asset('uploads/' . setting()->logo) }}" alt="" height="40">
-                        <span class="logo-txt text-uppercase fw-bold fs-6">{{ setting()->site_name }}</span>
                     </span>
                 </a>
             </div>

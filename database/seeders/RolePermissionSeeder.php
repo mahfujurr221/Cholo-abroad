@@ -46,6 +46,16 @@ class RolePermissionSeeder extends Seeder
 
             //dashboard
             'dashboard',
+
+            // CMS Modules
+            'list-hero', 'create-hero', 'edit-hero', 'delete-hero',
+            'list-country', 'create-country', 'edit-country', 'delete-country',
+            'list-service', 'create-service', 'edit-service', 'delete-service',
+            'list-process', 'create-process', 'edit-process', 'delete-process',
+            'list-testimonial', 'create-testimonial', 'edit-testimonial', 'delete-testimonial',
+            'list-cta', 'create-cta', 'edit-cta', 'delete-cta',
+            'list-aboutus', 'create-aboutus', 'edit-aboutus', 'delete-aboutus',
+            'list-faq', 'create-faq', 'edit-faq', 'delete-faq',
         ];
 
         foreach ($permissions as $permission) {

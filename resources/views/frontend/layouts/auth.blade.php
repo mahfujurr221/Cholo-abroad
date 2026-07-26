@@ -44,34 +44,7 @@
     </div>
     <!-- preloader end  -->
 
-    <header>
-        <!-- tp-header-area-start -->
-        <div class="header-signin-area header-bottom__transparent header-signin-ptb z-index-5">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-6">
-                        <div class="header-signin-logo">
-                            <a href="{{ route('frontend.home') }}"><img src="{{ asset('frontend/assets/img/logo/logo-inner.png') }}"
-                                    alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="header-signin-bar text-end tp-menu-bar">
-                            <button>
-                                <i>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    @include('frontend.layouts.includes.offcanvas')
 
     <div id="smooth-wrapper">
         <div id="smooth-content">

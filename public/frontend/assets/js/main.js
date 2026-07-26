@@ -70,18 +70,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   if (steps.length) showStep(0);
-
-  // Prevent actual form submission (static demo)
-  document.querySelectorAll('form').forEach(function (f) {
-    f.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var box = f.querySelector('.form-success');
-      if (box) {
-        f.querySelectorAll('.form-step, .form-steps, .form-submit-row').forEach(function(el){ el.style.display = 'none'; });
-        box.style.display = 'block';
-      } else {
-        alert('Thanks! This is a design preview — hook this form up to your backend or a service like Formspree.');
-      }
-    });
-  });
 });

@@ -8,6 +8,15 @@ use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\Backend\HeroController;
+use App\Http\Controllers\Backend\CountryController;
+use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\ProcessController;
+use App\Http\Controllers\Backend\TestimonialController;
+use App\Http\Controllers\Backend\CtaController;
+use App\Http\Controllers\Backend\AboutUsController;
+use App\Http\Controllers\Backend\FaqController;
+
 /*
 |--------------------------------------------------------------------------
 | Admin / Backend Routes
@@ -28,6 +37,16 @@ Route::prefix('back')->middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::post('/profile-reset', [ProfileController::class, 'reset'])->name('profile.reset');
     Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
+
+    /////////////// CMS Modules ///////////////
+    Route::resource('heroes', HeroController::class)->except(['show']);
+    Route::resource('countries', CountryController::class)->except(['show']);
+    Route::resource('services', ServiceController::class)->except(['show']);
+    Route::resource('processes', ProcessController::class)->except(['show']);
+    Route::resource('testimonials', TestimonialController::class)->except(['show']);
+    Route::resource('ctas', CtaController::class)->except(['show']);
+    Route::resource('about-us', AboutUsController::class)->except(['show']);
+    Route::resource('faqs', FaqController::class)->except(['show']);
 
 
     /////////////// Settings ///////////////
