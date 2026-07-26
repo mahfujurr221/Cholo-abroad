@@ -64,6 +64,14 @@ class DatabaseSeeder extends Seeder
         // Call Seeders
         $this->call([
             RolePermissionSeeder::class,
+            HeroSeeder::class,
+            CountrySeeder::class,
+            ServiceSeeder::class,
+            ProcessSeeder::class,
+            TestimonialSeeder::class,
+            CtaSeeder::class,
+            AboutUsSeeder::class,
+            FaqSeeder::class,
         ]);
     }
 }
