@@ -53,14 +53,11 @@
             <div class="form-field"><label>Preferred country</label>
               <select name="preferred_country" required>
                 <option value="">Select a country</option>
-                <option value="Canada">Canada</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Australia">Australia</option>
-                <option value="Germany">Germany</option>
-                <option value="United States">United States</option>
-                <option value="South Korea">South Korea</option>
-                <option value="Malaysia">Malaysia</option>
-                <option value="Not sure yet">Not sure yet</option>
+                @php $applyCountries = \App\Models\Country::where('active_status', 1)->get(); @endphp
+                @foreach($applyCountries as $c)
+                <option value="{{ $c->name }}">{{ $c->flag_icon }} {{ $c->name }}</option>
+                @endforeach
+                <option value="Not sure yet">🤔 Not sure yet</option>
               </select>
             </div>
             <div class="form-field"><label>Visa type</label>

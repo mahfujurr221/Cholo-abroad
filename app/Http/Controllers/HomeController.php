@@ -17,14 +17,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $heroes = Hero::where('active_status', 1)->get();
-        $countries = Country::where('active_status', 1)->get();
-        $services = Service::where('active_status', 1)->get();
-        $processes = Process::where('active_status', 1)->orderBy('step_number')->get();
+        $heroes      = Hero::where('active_status', 1)->get();
+        $countries   = Country::where('active_status', 1)->get();
+        $services    = Service::where('active_status', 1)->get();
+        $processes   = Process::where('active_status', 1)->orderBy('step_number')->get();
         $testimonials = Testimonial::where('active_status', 1)->get();
-        $cta = Cta::where('active_status', 1)->first();
+        $cta         = Cta::where('active_status', 1)->first();
+        $about       = AboutUs::where('active_status', 1)->first();
+        $faqs        = Faq::where('active_status', 1)->get();
 
-        return view('frontend.home', compact('heroes', 'countries', 'services', 'processes', 'testimonials', 'cta'));
+        return view('frontend.home', compact('heroes', 'countries', 'services', 'processes', 'testimonials', 'cta', 'about', 'faqs'));
     }
 
     public function about()

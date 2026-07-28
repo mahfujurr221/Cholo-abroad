@@ -12,9 +12,6 @@ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         // Creating super admin user
@@ -22,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'fname' => 'Super',
             'lname' => 'Admin',
             'email' => 'admin@gmail.com',
-            'phone' => '00000000000',
+            'phone' => '01700000000',
             'password' => bcrypt('admin12'),
         ]);
 
@@ -35,26 +32,25 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('dev12'),
         ]);
 
-
         // Creating roles
-        Role::create(['name' => 'Admin', 'guard_name' => 'web']);
-        Role::create(['name' => 'Vendor', 'guard_name' => 'web']);
-        Role::create(['name' => 'Customer', 'guard_name' => 'web']);
+        Role::create(['name' => 'Admin',        'guard_name' => 'web']);
+        Role::create(['name' => 'Vendor',       'guard_name' => 'web']);
+        Role::create(['name' => 'Customer',     'guard_name' => 'web']);
         Role::create(['name' => 'Delivery Boy', 'guard_name' => 'web']);
-        Role::create(['name' => 'Operator', 'guard_name' => 'web']);
+        Role::create(['name' => 'Operator',     'guard_name' => 'web']);
 
         // Creating settings
         Setting::create([
-            'site_name' => 'Cholo Abroad',
-            'site_title' => 'Cholo Abroad',
-            'logo' => 'logo.png',
-            'favicon' => 'favicon.png',
-            'email' => 'choloabroad@gmail.com',
-            'phone' => '00000000000',
-            'address' => 'Italy',
-            'footer_text' => '© 2025 Cholo Abroad. All rights reserved.',
-            'newslatter_text' => 'Subscribe to our newsletter',
-            'facebook' => 'https://www.facebook.com/',
+            'site_name'       => 'Cholo Abroad',
+            'site_title'      => 'Cholo Abroad — Study & Visa Consultants',
+            'logo'            => null,
+            'favicon'         => null,
+            'email'           => 'hello@choloabroad.com',
+            'phone'           => '+880 1700-000000',
+            'address'         => 'House 14, Road 9, Sector 4, Uttara, Dhaka 1230, Bangladesh',
+            'footer_text'     => '© ' . date('Y') . ' Cholo Abroad. All rights reserved.',
+            'newslatter_text' => 'Get weekly visa tips and intake alerts straight to your inbox.',
+            'facebook'        => 'https://www.facebook.com/choloabroad',
         ]);
 
         // Assigning roles to users

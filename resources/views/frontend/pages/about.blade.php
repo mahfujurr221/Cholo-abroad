@@ -8,7 +8,7 @@
   <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">About</span></div>
   <div class="eyebrow-label">Who we are</div>
   <h1>We've filed the paperwork <span style="color:var(--sky)">so you don't have to</span></h1>
-  <p>{{ $about->short_description ?? 'Cholo Abroad started with one frustration: visa consulting in Bangladesh was slow, opaque, and split across too many hands. We built the counsellor-owns-the-file model to fix that.' }}</p>
+  <p>{{ $about->mission ?? 'Cholo Abroad started with one frustration: visa consulting in Bangladesh was slow, opaque, and split across too many hands. We built the counsellor-owns-the-file model to fix that.' }}</p>
 </div>
 
 <section class="sec tight">
@@ -17,7 +17,7 @@
       <div class="corner tl" style="border-color:var(--sky);"></div>
       <div class="corner br" style="border-color:var(--gold);"></div>
       <div class="frame">
-          <img src="{{ isset($about) && $about->image ? asset('uploads/' . $about->image) : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&auto=format&fit=crop' }}" alt="Consulting team at work">
+          <img src="{{ isset($about) && $about->image1 ? asset('uploads/' . $about->image1) : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&auto=format&fit=crop' }}" alt="Consulting team at work">
       </div>
     </div>
     <div>
@@ -28,7 +28,7 @@
           {!! $about->description !!}
       @else
           <p>Cholo Abroad was founded in 2019 in Dhaka by a small team of former international students who each went through the visa process the hard way — rejected paperwork, missed intakes, and agents who disappeared after taking a fee.</p>
-          <p>Today, that same team runs a counsellor-owns-the-file model: one person sees your case from the first call to the day you land, instead of passing you between departments. It's slower to scale, but it's why our approval rate holds above 90% across every destination we cover.</p>
+          <p>Today, that same team runs a counsellor-owns-the-file model: one person sees your case from the first call to the day you land, instead of passing you between departments.</p>
       @endif
 
       <div class="hero-ctas" style="margin-top:28px; display:flex; gap:14px;">
@@ -41,16 +41,45 @@
   </div>
 </section>
 
+{{-- Stats Band --}}
 <section class="sec tight">
   <div class="wrap">
     <div class="stats-band">
       <div class="stat"><b>2019</b><span>Founded in Dhaka</span></div>
       <div class="stat"><b>12k+</b><span>Applications filed</span></div>
       <div class="stat"><b>96%</b><span>Peak approval rate</span></div>
-      <div class="stat"><b>18</b><span>Countries covered</span></div>
+      <div class="stat"><b>8</b><span>Countries covered</span></div>
     </div>
   </div>
 </section>
+
+{{-- Mission & Vision --}}
+@if(isset($about) && ($about->mission || $about->vision))
+<section class="sec tight">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow-label">What drives us</div>
+      <h2>Mission & Vision</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      @if($about->mission)
+      <div style="background:#fff; border-radius:20px; padding:36px; border:1px solid var(--line); position:relative;">
+        <div style="font-family:'Poppins',sans-serif; font-size:28px; font-weight:800; color:var(--gold); margin-bottom:14px;">01</div>
+        <h3 style="font-size:20px; color:var(--navy); font-weight:700; margin-bottom:12px;">Our Mission</h3>
+        <p style="color:var(--muted); line-height:1.7; font-size:15px;">{{ $about->mission }}</p>
+      </div>
+      @endif
+      @if($about->vision)
+      <div style="background:#fff; border-radius:20px; padding:36px; border:1px solid var(--line); position:relative;">
+        <div style="font-family:'Poppins',sans-serif; font-size:28px; font-weight:800; color:var(--sky); margin-bottom:14px;">02</div>
+        <h3 style="font-size:20px; color:var(--navy); font-weight:700; margin-bottom:12px;">Our Vision</h3>
+        <p style="color:var(--muted); line-height:1.7; font-size:15px;">{{ $about->vision }}</p>
+      </div>
+      @endif
+    </div>
+  </div>
+</section>
+@endif
 
 <!-- VALUES -->
 <section class="sec">
@@ -81,18 +110,18 @@
 
 @if(isset($faqs) && $faqs->count() > 0)
 <!-- FAQS -->
-<section class="sec tight">
+<section class="sec tight" style="background:var(--bg);">
   <div class="wrap">
     <div class="sec-head center">
       <div class="eyebrow-label">Common questions</div>
       <h2>Frequently Asked Questions</h2>
     </div>
-    <div class="faq-list">
+    <div class="faq-list" style="max-width:780px; margin:0 auto;">
       @foreach($faqs as $faq)
       <div class="faq-item">
         <div class="faq-q">
-          <h4>{{ $faq->question }}</h4>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          <h3>{{ $faq->question }}</h3>
+          <div class="plus"></div>
         </div>
         <div class="faq-a">
           <p>{!! nl2br(e($faq->answer)) !!}</p>

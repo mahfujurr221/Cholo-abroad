@@ -2,8 +2,6 @@
 
 @section('title', 'Home - ' . (setting()->site_name ?? 'Cholo Abroad'))
 
-@section('content')
-
 @push('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <style>
@@ -11,8 +9,26 @@
   .testi-swiper { width: 100%; overflow: hidden; padding-bottom: 40px; position: relative; }
   .swiper-pagination-bullet-active { background: var(--sky); }
   .hero-swiper .swiper-pagination { bottom: 10px; }
+  /* About preview */
+  .about-preview{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .about-preview .visual{position:relative; height:420px;}
+  .about-preview .frame{position:absolute; inset:24px; border-radius:20px; overflow:hidden;}
+  .about-preview .frame img{width:100%;height:100%;object-fit:cover;}
+  .about-preview h2{font-size:34px; color:var(--navy); font-weight:800; letter-spacing:-0.5px; margin-bottom:16px;}
+  .about-preview p{color:var(--muted); font-size:15.5px; line-height:1.7; margin-bottom:12px;}
+  .mv-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px;}
+  .mv-card{background:var(--bg); border-radius:14px; padding:20px; border:1px solid var(--line);}
+  .mv-card .label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--sky); margin-bottom:6px;}
+  .mv-card p{font-size:13.5px; color:var(--muted); line-height:1.6; margin:0;}
+  @media(max-width:980px){
+    .about-preview{grid-template-columns:1fr;}
+    .about-preview .visual{height:280px;}
+    .mv-grid{grid-template-columns:1fr;}
+  }
 </style>
 @endpush
+
+@section('content')
 
 @if($heroes->count() > 0)
 <!-- HERO -->
@@ -33,7 +49,7 @@
           </div>
           <div class="hero-stats">
             <div class="stat"><b>96%</b><span>Visa approval rate</span></div>
-            <div class="stat"><b>18</b><span>Destination countries</span></div>
+            <div class="stat"><b>{{ $countries->count() }}+</b><span>Destination countries</span></div>
             <div class="stat"><b>12k+</b><span>Applications filed</span></div>
           </div>
         </div>
@@ -70,7 +86,10 @@
     <span>Visa-approved destinations</span>
     <div class="flags-row">
       @foreach($countries as $country)
-          <div><span class="fdot" style="background:var(--sky)"></span>{{ $country->name }}</div>
+          <div>
+            <span class="fdot" style="background:var(--sky)">{{ $country->flag_icon }}</span>
+            {{ $country->name }}
+          </div>
       @endforeach
     </div>
   </div>
@@ -90,9 +109,15 @@
         <img src="{{ $country->image ? asset('uploads/' . $country->image) : 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=500&auto=format&fit=crop' }}" alt="{{ $country->name }}">
         <div class="cc-badge">96% approval</div>
         <div class="cc-corner tl"></div><div class="cc-corner br"></div>
-        <div class="cc-info"><b>{{ $country->name }}</b><span>{{ Str::limit($country->description, 30) }}</span></div>
+        <div class="cc-info">
+          <b>{{ $country->flag_icon }} {{ $country->name }}</b>
+          <span>{{ Str::limit($country->description, 45) }}</span>
+        </div>
       </a>
       @endforeach
+    </div>
+    <div style="text-align:center; margin-top:32px;">
+      <a href="{{ route('frontend.countries') }}" class="btn-ghost">View all {{ $countries->count() }} destinations →</a>
     </div>
   </div>
 </section>
@@ -110,7 +135,7 @@
       <div class="service-card">
         <div class="service-icon">
             @if($service->icon)
-                <img src="{{ asset('uploads/' . $service->icon) }}" alt="{{ $service->title }}" style="width: 24px; height: 24px; filter: invert(0.5) sepia(1) saturate(5) hue-rotate(180deg);">
+                <img src="{{ asset('uploads/' . $service->icon) }}" alt="{{ $service->title }}" style="width: 24px; height: 24px; filter: invert(1);">
             @else
                 <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             @endif
@@ -121,7 +146,7 @@
       @endforeach
     </div>
     <div style="text-align:center; margin-top:44px;">
-      <a href="{{ route('frontend.services') }}" class="btn-ghost" style="border-color:rgba(255,255,255,0.2); color:#fff;">View all services</a>
+      <a href="{{ route('frontend.services') }}" class="btn-ghost" style="border-color:rgba(255,255,255,0.2); color:#fff;">View all services →</a>
     </div>
   </div>
 </section>
@@ -146,10 +171,60 @@
   </div>
 </section>
 
+<!-- ABOUT PREVIEW -->
+@if($about)
+<section class="sec" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="about-preview">
+      <div class="visual">
+        <div class="corner tl" style="border-color:var(--sky);"></div>
+        <div class="corner br" style="border-color:var(--gold);"></div>
+        <div class="frame">
+          <img src="{{ $about->image1 ? asset('uploads/'.$about->image1) : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&auto=format&fit=crop' }}" alt="Cholo Abroad team">
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow-label">Who we are</div>
+        <h2>{{ $about->title }}</h2>
+        @if($about->description)
+          <p>{{ Str::limit(strip_tags($about->description), 280) }}</p>
+        @endif
+        @if($about->mission || $about->vision)
+        <div class="mv-grid">
+          @if($about->mission)
+          <div class="mv-card">
+            <div class="label">Mission</div>
+            <p>{{ Str::limit($about->mission, 100) }}</p>
+          </div>
+          @endif
+          @if($about->vision)
+          <div class="mv-card">
+            <div class="label">Vision</div>
+            <p>{{ Str::limit($about->vision, 100) }}</p>
+          </div>
+          @endif
+        </div>
+        @endif
+        <div style="margin-top:28px; display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="{{ route('frontend.about') }}" class="btn-primary">Our story
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="{{ route('frontend.contact') }}" class="btn-ghost">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+@endif
+
 <!-- TESTIMONIAL -->
 @if($testimonials->count() > 0)
 <section class="sec testi-sec">
   <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow-label">Success stories</div>
+      <h2>Students who trusted us with their future</h2>
+    </div>
     <div class="swiper testi-swiper">
       <div class="swiper-wrapper">
         @foreach($testimonials as $testi)
@@ -168,6 +243,34 @@
         @endforeach
       </div>
       <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+@endif
+
+<!-- FAQ PREVIEW -->
+@if($faqs->count() > 0)
+<section class="sec tight" style="background:#fff;">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow-label">Got questions?</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div style="max-width:780px; margin:0 auto;">
+      @foreach($faqs->take(5) as $faq)
+      <div class="faq-item">
+        <div class="faq-q">
+          <h3>{{ $faq->question }}</h3>
+          <div class="plus"></div>
+        </div>
+        <div class="faq-a">
+          <p>{{ $faq->answer }}</p>
+        </div>
+      </div>
+      @endforeach
+    </div>
+    <div style="text-align:center; margin-top:36px;">
+      <a href="{{ route('frontend.about') }}#faqs" class="btn-ghost">See all questions →</a>
     </div>
   </div>
 </section>
