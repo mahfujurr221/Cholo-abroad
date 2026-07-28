@@ -14,8 +14,8 @@ class TestimonialSeeder extends Seeder
   'name_bn' => 'জন ডো',
   'designation' => 'Student',
   'designation_bn' => 'শিক্ষার্থী',
-  'message' => 'Great service!',
-  'message_bn' => 'দুর্দান্ত সার্ভিস!',
+  'quote' => 'Great service!',
+  'quote_bn' => 'দুর্দান্ত সার্ভিস!',
 ));
     }
 }

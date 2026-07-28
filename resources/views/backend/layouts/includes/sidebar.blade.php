@@ -236,6 +236,15 @@
                     </ul>
                 </li>
                 @endcanany
+                
+                <li>
+                    <a href="{{ route('applications.index') }}"
+                        class="{{ Route::is('applications.*') ? 'active' : '' }}">
+                        <i data-feather="file-text"></i>
+                        <span>Applications</span>
+                    </a>
+                </li>
+
                 <li class="menu-title mt-2" data-key="t-components">Users and Roles</li>
                 @can('list-role')
                 <li>

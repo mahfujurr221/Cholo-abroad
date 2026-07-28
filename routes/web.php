@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\CtaController;
 use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\FaqController;
+use App\Http\Controllers\Backend\ApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,11 @@ Route::prefix('back')->middleware(['auth'])->group(function () {
     Route::resource('ctas', CtaController::class)->except(['show']);
     Route::resource('about-us', AboutUsController::class)->except(['show']);
     Route::resource('faqs', FaqController::class)->except(['show']);
-
+    
+    /////////////// Applications ///////////////
+    Route::get('applications', [ApplicationController::class, 'index'])->name('applications.index');
+    Route::get('applications/{id}', [ApplicationController::class, 'show'])->name('applications.show');
+    Route::put('applications/{id}/status', [ApplicationController::class, 'updateStatus'])->name('applications.updateStatus');
 
     /////////////// Settings ///////////////
     Route::resource('settings', SettingController::class)->except(['show', 'edit', 'create', 'destroy']);
