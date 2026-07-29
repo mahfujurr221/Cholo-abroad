@@ -47,36 +47,90 @@
       <!-- RIGHT: quick message form -->
       <div class="contact-form-panel">
         <h3>Send us a message</h3>
-        <form>
+        <form id="contactForm">
+          @csrf
           <div class="form-row">
-            <div class="form-field"><label>Full name</label><input type="text" placeholder="Your name" required></div>
-            <div class="form-field"><label>Phone number</label><input type="tel" placeholder="+880 1XXX-XXXXXX" required></div>
+            <div class="form-field"><label>Full name</label><input type="text" name="name" placeholder="Your name" required></div>
+            <div class="form-field"><label>Phone number</label><input type="tel" name="phone" placeholder="+880 1XXX-XXXXXX" required></div>
           </div>
           <div class="form-row">
-            <div class="form-field full"><label>Email address</label><input type="email" placeholder="you@email.com" required></div>
+            <div class="form-field full"><label>Email address</label><input type="email" name="email" placeholder="you@email.com" required></div>
           </div>
           <div class="form-row">
             <div class="form-field full"><label>What can we help with?</label>
-              <select required>
+              <select name="topic" required>
                 <option value="">Select a topic</option>
-                <option>Country & visa guidance</option>
-                <option>Document review</option>
-                <option>Existing application status</option>
-                <option>Something else</option>
+                <option value="Country & visa guidance">Country & visa guidance</option>
+                <option value="Document review">Document review</option>
+                <option value="Existing application status">Existing application status</option>
+                <option value="Something else">Something else</option>
               </select>
             </div>
           </div>
           <div class="form-row">
-            <div class="form-field full"><label>Message</label><textarea placeholder="Tell us a bit about your situation..." required></textarea></div>
+            <div class="form-field full"><label>Message</label><textarea name="message" placeholder="Tell us a bit about your situation..." required></textarea></div>
           </div>
-          <button type="button" class="btn-primary form-submit">Send message
+          <button type="submit" class="btn-primary form-submit">Send message
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </button>
         </form>
-      </div>
 
+        <div class="form-success" style="display:none; margin-top:20px; padding:20px; background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px;">
+          <div class="tick" style="width:40px;height:40px;background:#4caf50;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3 style="margin-bottom:8px;color:#2e7d32;">Message sent successfully!</h3>
+          <p style="color:#1b5e20;">Thank you for reaching out. We will get back to you shortly.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                let formData = new FormData(contactForm);
+                let submitBtn = contactForm.querySelector('button[type="submit"]');
+                let originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = 'Sending...';
+                submitBtn.disabled = true;
+
+                fetch("{{ route('frontend.contact.submit') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        contactForm.style.display = 'none';
+                        document.querySelector('.form-success').style.display = 'block';
+                    } else {
+                        alert(data.message || 'Something went wrong. Please try again.');
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again later.');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        }
+    });
+</script>
+@endpush

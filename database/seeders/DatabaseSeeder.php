@@ -33,11 +33,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Creating roles
-        Role::create(['name' => 'Admin',        'guard_name' => 'web']);
-        Role::create(['name' => 'Vendor',       'guard_name' => 'web']);
-        Role::create(['name' => 'Customer',     'guard_name' => 'web']);
-        Role::create(['name' => 'Delivery Boy', 'guard_name' => 'web']);
-        Role::create(['name' => 'Operator',     'guard_name' => 'web']);
+        Role::firstOrCreate(['name' => 'Admin',        'guard_name' => 'web']);
+        Role::firstOrCreate(['name' => 'Operator',     'guard_name' => 'web']);
 
         // Creating settings
         Setting::create([

@@ -8,6 +8,13 @@ use App\Models\Application;
 
 class ApplicationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('can:list-application')->only('index', 'show');
+        $this->middleware('can:edit-application')->only('updateStatus');
+    }
+
     public function index()
     {
         $applications = Application::orderBy('id', 'desc')->get();

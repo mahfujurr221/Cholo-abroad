@@ -237,6 +237,7 @@
                 </li>
                 @endcanany
                 
+                @can('list-application')
                 <li>
                     <a href="{{ route('applications.index') }}"
                         class="{{ Route::is('applications.*') ? 'active' : '' }}">
@@ -244,6 +245,17 @@
                         <span>Applications</span>
                     </a>
                 </li>
+                @endcan
+
+                @can('list-contact')
+                <li>
+                    <a href="{{ route('contacts.index') }}"
+                        class="{{ Route::is('contacts.*') ? 'active' : '' }}">
+                        <i data-feather="mail"></i>
+                        <span>Contact Messages</span>
+                    </a>
+                </li>
+                @endcan
 
                 <li class="menu-title mt-2" data-key="t-components">Users and Roles</li>
                 @can('list-role')

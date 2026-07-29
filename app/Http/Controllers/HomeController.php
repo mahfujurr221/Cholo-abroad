@@ -87,4 +87,22 @@ class HomeController extends Controller
             return response()->json(['status' => 'error', 'message' => 'An error occurred while submitting your application.']);
         }
     }
+
+    public function submitContact(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'topic' => 'nullable|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        try {
+            \App\Models\Contact::create($validated);
+            return response()->json(['status' => 'success', 'message' => 'Message submitted successfully.']);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => 'An error occurred while submitting your message.']);
+        }
+    }
 }

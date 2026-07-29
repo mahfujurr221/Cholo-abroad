@@ -11,6 +11,7 @@ Route::name('frontend.')->group(function () {
         Route::get('/countries', 'countries')->name('countries');
         Route::get('/faq', 'faq')->name('faq');
         Route::get('/contact', 'contact')->name('contact');
+        Route::post('/contact', 'submitContact')->name('contact.submit');
         
         // Application Form
         Route::get('/apply', 'apply')->name('apply');
