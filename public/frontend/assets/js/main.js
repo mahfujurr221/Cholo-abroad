@@ -1,9 +1,9 @@
 // ─── Preloader ───────────────────────────────────────────────────
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
   var preloader = document.getElementById('preloader');
   if (preloader) {
     preloader.classList.add('fade-out');
-    setTimeout(function() {
+    setTimeout(function () {
       preloader.style.display = 'none';
     }, 500);
   }
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ─── Step validation helper ──────────────────────────────────────
-  window.validateFormFields = function(stepEl) {
+  window.validateFormFields = function (stepEl) {
     var valid = true;
     // Clear old errors
     stepEl.querySelectorAll('.field-error').forEach(function (el) { el.classList.remove('field-error'); });
@@ -156,5 +156,53 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   if (steps.length) showStep(0);
+
+  // ─── Global Scroll Animation ───────────────────────────────────────
+  const animationSelectors = [
+    'h1', 'h2', 'h3', '.sec-head p',
+    '.country-card', '.service-card', '.service-card-light',
+    '.process-step', '.value-card', '.testi-card', '.team-card',
+    '.contact-panel', '.contact-form-panel',
+    '.form-shell', '.stats-band', '.mv-card',
+    '.about-split .visual', '.page-hero p',
+    '.cta-box', '.faq-item', '.btn-primary', '.btn-ghost'
+  ].join(', ');
+
+  const animatedElements = document.querySelectorAll(animationSelectors);
+
+  // Do not animate elements inside the navigation or preloader to avoid glitches
+  const filteredElements = Array.from(animatedElements).filter(el => {
+    return !el.closest('nav') && !el.closest('.nav-shell') && !el.closest('#preloader');
+  });
+
+  filteredElements.forEach(function (el, index) {
+    el.classList.add('fade-up');
+    // Add slight delay for staggered elements like grids
+    const isGridChild = el.parentElement && (el.parentElement.style.display === 'grid' || window.getComputedStyle(el.parentElement).display === 'grid');
+    if (isGridChild) {
+      let delay = (Array.from(el.parentElement.children).indexOf(el) % 4) * 100;
+      if (delay === 100) el.classList.add('delay-100');
+      if (delay === 200) el.classList.add('delay-200');
+      if (delay === 300) el.classList.add('delay-300');
+    }
+  });
+
+  const scrollObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  filteredElements.forEach(function (el) {
+    scrollObserver.observe(el);
+  });
 });
+
 
