@@ -39,6 +39,7 @@ class CountryController extends Controller
             'slug' => 'required|max:60|unique:countries',
             'description' => 'nullable',
             'description_bn' => 'nullable',
+            'approval_rate' => 'nullable|max:20',
             'image' => 'nullable|image|max:2048',
             'flag_icon' => 'nullable|image|max:2048'
         ]);
@@ -78,9 +79,10 @@ class CountryController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'name_bn' => 'nullable|max:50',
-            'slug' => 'required|max:60|unique:countries,slug,$id',
+            'slug' => 'required|max:60|unique:countries,slug,' . $id,
             'description' => 'nullable',
             'description_bn' => 'nullable',
+            'approval_rate' => 'nullable|max:20',
             'image' => 'nullable|image|max:2048',
             'flag_icon' => 'nullable|image|max:2048'
         ]);

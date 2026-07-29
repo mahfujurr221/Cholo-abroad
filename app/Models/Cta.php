@@ -9,5 +9,10 @@ class Cta extends Model
 {
     use \App\Traits\ClearsFrontendCache;
     use HasFactory;
+
+    protected $guarded = [];
+
 }
+
+
 

@@ -9,6 +9,9 @@ class AboutUs extends Model
 {
     use \App\Traits\ClearsFrontendCache;
     use HasFactory;
-    
-    protected $guarded = ['id'];
+
+    protected $guarded = [];
+
 }
+
+

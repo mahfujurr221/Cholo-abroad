@@ -18,10 +18,24 @@
     <div class="countries-grid">
       @foreach($countries as $country)
       <a class="country-card" id="{{ Str::slug($country->name) }}" href="{{ route('frontend.apply') }}" data-region="all">
-        <img src="{{ $country->image ? asset('uploads/' . $country->image) : 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=500&auto=format&fit=crop' }}" alt="{{ $country->name }}">
-        <div class="cc-badge">96% approval</div>
+        <img src="{{ $country->image ? asset('uploads/countries/' . $country->image) : 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=500&auto=format&fit=crop' }}" alt="{{ $country->name }}">
+        @if($country->approval_rate)
+          <div class="cc-badge">{{ $country->approval_rate }} approval</div>
+        @endif
         <div class="cc-corner tl"></div><div class="cc-corner br"></div>
-        <div class="cc-info"><b>{{ $country->name }}</b><span>{!! Str::limit(strip_tags($country->description), 50) !!}</span></div>
+        <div class="cc-info">
+          <b>
+            @if($country->flag_icon)
+              @if(preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $country->flag_icon))
+                <img src="{{ asset('uploads/countries/' . $country->flag_icon) }}" style="width: 18px; height: 18px; object-fit: cover; border-radius: 50%; vertical-align: middle; margin-right: 4px; border: 1px solid rgba(0,0,0,0.1);">
+              @else
+                {{ $country->flag_icon }}
+              @endif
+            @endif
+            {{ $country->name }}
+          </b>
+          <span>{!! Str::limit(strip_tags($country->description), 50) !!}</span>
+        </div>
       </a>
       @endforeach
     </div>

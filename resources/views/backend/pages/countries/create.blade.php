@@ -22,6 +22,9 @@
                         <div class="col-md-6">
                             <x-modern.input label="Slug" name="slug" placeholder="Enter Slug" :value="old('slug')" required />
                         </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Approval Rate (%)" name="approval_rate" placeholder="e.g. 96%" :value="old('approval_rate')" />
+                        </div>
                         <div class="col-md-12">
                             <x-modern.input type="textarea" class="summernote" label="Description" name="description" placeholder="Enter Description" :value="old('description')" rows="3"  />
                         </div>

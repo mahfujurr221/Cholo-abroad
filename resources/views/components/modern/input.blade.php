@@ -37,6 +37,12 @@
             {{ $attributes->merge(['class' => 'form-control modern-input ' . ($errors->has($name) || $error ? 'is-invalid' : '')]) }}
             style="border-radius: {{ $icon ? '0 12px 12px 0' : '12px' }}; border-color: #e2e8f0; padding: 0.7rem 1rem;"
             >{{ old($name, $value) }}</textarea>
+        @elseif($type === 'file')
+        <input type="file" name="{{ $name }}" id="{{ $finalId }}" accept="image/*"
+            @if($required) required @endif {{ $attributes->merge(['class' => 'form-control modern-input ' . ($errors->has($name) || $error ? 'is-invalid' : '')]) }}
+            style="border-radius: {{ $icon ? '0 12px 12px 0' : '12px' }}; border-color: #e2e8f0; padding: 0.7rem 1rem;"
+            onchange="previewModernImage(this, 'preview-{{ $finalId }}')"
+        >
         @else
         <input type="{{ $type }}" name="{{ $name }}" id="{{ $finalId }}" value="{{ old($name, $value) }}"
             placeholder="{{ $placeholder }}" @if($required) required @endif {{ $attributes->merge(['class' =>
@@ -51,6 +57,13 @@
         </div>
         @endif
     </div>
+
+    @if($type === 'file')
+    <div class="mt-2 d-none" id="preview-container-{{ $finalId }}">
+        <img id="preview-{{ $finalId }}" src="" alt="Image Preview" class="img-thumbnail" style="max-height: 150px; border-radius: 8px;">
+    </div>
+    @endif
+
 
     @if($help)
     <div class="form-text text-muted font-size-12 mt-1 ps-2">{{ $help }}</div>
@@ -79,3 +92,26 @@
         color: #629D23 !important;
     }
 </style>
+
+@once
+@push('scripts')
+<script>
+    function previewModernImage(input, previewId) {
+        var previewContainer = document.getElementById('preview-container-' + input.id);
+        var previewImage = document.getElementById(previewId);
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                previewImage.src = e.target.result;
+                previewContainer.classList.remove('d-none');
+            }
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            previewImage.src = '';
+            previewContainer.classList.add('d-none');
+        }
+    }
+</script>
+@endpush
+@endonce

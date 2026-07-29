@@ -60,7 +60,8 @@ class HeroController extends Controller
             toast('Hero Created Successfully!', 'success');
             return redirect()->route('heroes.index');
         } catch (\Exception $e) {
-            toast('Something went wrong!', 'error');
+            \Log::error('Hero Store Error: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
+            toast('Something went wrong! ' . $e->getMessage(), 'error');
             return back()->withInput();
         }
     }
@@ -102,7 +103,8 @@ class HeroController extends Controller
             toast('Hero Updated Successfully!', 'success');
             return redirect()->route('heroes.index');
         } catch (\Exception $e) {
-            toast('Something went wrong!', 'error');
+            \Log::error('Hero Update Error: ' . $e->getMessage() . ' in ' . $e->getFile() . ':' . $e->getLine());
+            toast('Something went wrong! ' . $e->getMessage(), 'error');
             return back()->withInput();
         }
     }
