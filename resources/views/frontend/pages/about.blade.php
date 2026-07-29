@@ -61,7 +61,7 @@
       <div class="eyebrow-label">What drives us</div>
       <h2>Mission & Vision</h2>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+    <div class="mission-vision-grid">
       @if($about->mission)
       <div style="background:#fff; border-radius:20px; padding:36px; border:1px solid var(--line); position:relative;">
         <div style="font-family:'Poppins',sans-serif; font-size:28px; font-weight:800; color:var(--gold); margin-bottom:14px;">01</div>

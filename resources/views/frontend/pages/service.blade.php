@@ -13,7 +13,7 @@
 
 <section class="sec tight">
   <div class="wrap">
-    <div class="services-grid" style="grid-template-columns:repeat(3,1fr); gap:24px;">
+    <div class="services-grid-3">
       @foreach($services as $service)
       <div class="service-card-light">
         <div class="service-icon">
