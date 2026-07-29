@@ -1,4 +1,16 @@
+// ─── Preloader ───────────────────────────────────────────────────
+window.addEventListener('load', function() {
+  var preloader = document.getElementById('preloader');
+  if (preloader) {
+    preloader.classList.add('fade-out');
+    setTimeout(function() {
+      preloader.style.display = 'none';
+    }, 500);
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function () {
+
   // Country dropdown toggle
   document.querySelectorAll('.dd-trigger').forEach(function (trigger) {
     trigger.addEventListener('click', function (e) {

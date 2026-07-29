@@ -15,6 +15,13 @@
 </head>
 <body>
 
+<!-- Preloader -->
+<div id="preloader">
+    <div class="loader-content">
+        <img src="{{ asset(setting()->logo ? 'uploads/' . setting()->logo : 'backend/images/bdclean_logo_animated.gif') }}" alt="{{ setting()->site_name ?? 'Cholo Abroad' }}" class="loader-logo">
+    </div>
+</div>
+
 <!-- Header (Nav) -->
 @include('frontend.layouts.includes.header')
 
