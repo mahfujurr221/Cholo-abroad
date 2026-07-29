@@ -8,7 +8,7 @@
                         <img src="{{ asset('uploads/' . setting()->logo) }}" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('uploads/' . setting()->logo) }}" alt="" height="40"> 
+                        <img src="{{ asset('uploads/' . setting()->logo) }}" alt="" height="60"> 
                     </span>
                 </a>
 
@@ -17,7 +17,7 @@
                         <img src="{{ asset('uploads/' . setting()->logo) }}" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('uploads/' . setting()->logo) }}" alt="" height="40">
+                        <img src="{{ asset('uploads/' . setting()->logo) }}" alt="" height="60">
                     </span>
                 </a>
             </div>

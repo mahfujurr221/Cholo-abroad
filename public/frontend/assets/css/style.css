@@ -47,7 +47,7 @@ nav{
   position:relative;
 }
 .logo{display:flex; align-items:center; gap:8px;}
-.logo img{height:34px; width:auto;}
+.logo img{height:48px; width:auto;}
 .nav-links{display:flex; align-items:center; gap:34px; font-weight:500; font-size:15px; color:var(--muted);}
 .nav-links a{transition:color .2s; padding:8px 0;}
 .nav-links a:hover, .nav-links .active{color:var(--navy);}
@@ -651,7 +651,7 @@ footer{background:var(--navy-deep); padding:60px 32px 30px; color:#B7C4DE;}
 @media(max-width:480px){
   /* --- NAV --- */
   .logo h2{font-size:20px;}
-  .logo img{height:28px;}
+  .logo img{height:36px;}
   .apply-btn{padding:7px 7px 7px 14px; font-size:13px;}
   .apply-btn .circ{width:30px; height:30px;}
 
