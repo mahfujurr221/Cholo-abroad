@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // ─── Step validation helper ──────────────────────────────────────
-  function validateStep(stepEl) {
+  window.validateFormFields = function(stepEl) {
     var valid = true;
     // Clear old errors
     stepEl.querySelectorAll('.field-error').forEach(function (el) { el.classList.remove('field-error'); });
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
       var currentStepEl = steps[currentStep];
-      if (!validateStep(currentStepEl)) return;   // stop if invalid
+      if (!window.validateFormFields(currentStepEl)) return;   // stop if invalid
       if (currentStep < steps.length - 1) {
         currentStep++;
         showStep(currentStep);

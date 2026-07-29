@@ -40,7 +40,11 @@
         </div>
 
         <div class="map-block">
-          <iframe src="https://www.google.com/maps?q={{ urlencode(setting()->address ?? 'Uttara, Dhaka, Bangladesh') }}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          @if(setting() && setting()->google_map)
+            {!! setting()->google_map !!}
+          @else
+            <iframe src="https://www.google.com/maps?q={{ urlencode(setting()->address ?? 'Uttara, Dhaka, Bangladesh') }}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          @endif
         </div>
       </div>
 
@@ -94,9 +98,14 @@
     document.addEventListener('DOMContentLoaded', function () {
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
+            contactForm.setAttribute('novalidate', 'true');
             contactForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 
+                if (typeof window.validateFormFields === 'function') {
+                    if (!window.validateFormFields(contactForm)) return;
+                }
+
                 let formData = new FormData(contactForm);
                 let submitBtn = contactForm.querySelector('button[type="submit"]');
                 let originalText = submitBtn.innerHTML;
