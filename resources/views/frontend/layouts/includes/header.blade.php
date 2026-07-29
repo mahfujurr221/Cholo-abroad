@@ -14,7 +14,7 @@
         <div class="dd-trigger">Country <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
         <div class="dd-menu">
           @php
-             $headerCountries = \App\Models\Country::where('active_status', 1)->take(4)->get();
+             $headerCountries = \Illuminate\Support\Facades\Cache::rememberForever('frontend_header_countries', fn() => \App\Models\Country::where('active_status', 1)->take(4)->get());
           @endphp
           @foreach($headerCountries as $country)
               <a href="{{ route('frontend.countries') }}#{{ Str::slug($country->name) }}">

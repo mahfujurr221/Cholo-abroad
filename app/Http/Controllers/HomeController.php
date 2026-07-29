@@ -17,34 +17,34 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $heroes      = Hero::where('active_status', 1)->get();
-        $countries   = Country::where('active_status', 1)->get();
-        $services    = Service::where('active_status', 1)->get();
-        $processes   = Process::where('active_status', 1)->orderBy('step_number')->get();
-        $testimonials = Testimonial::where('active_status', 1)->get();
-        $cta         = Cta::where('active_status', 1)->first();
-        $about       = AboutUs::where('active_status', 1)->first();
-        $faqs        = Faq::where('active_status', 1)->get();
+        $heroes      = \Illuminate\Support\Facades\Cache::rememberForever('frontend_heroes', fn() => Hero::where('active_status', 1)->get());
+        $countries   = \Illuminate\Support\Facades\Cache::rememberForever('frontend_countries', fn() => Country::where('active_status', 1)->get());
+        $services    = \Illuminate\Support\Facades\Cache::rememberForever('frontend_services', fn() => Service::where('active_status', 1)->get());
+        $processes   = \Illuminate\Support\Facades\Cache::rememberForever('frontend_processes', fn() => Process::where('active_status', 1)->orderBy('step_number')->get());
+        $testimonials = \Illuminate\Support\Facades\Cache::rememberForever('frontend_testimonials', fn() => Testimonial::where('active_status', 1)->get());
+        $cta         = \Illuminate\Support\Facades\Cache::rememberForever('frontend_cta', fn() => Cta::where('active_status', 1)->first());
+        $about       = \Illuminate\Support\Facades\Cache::rememberForever('frontend_about', fn() => AboutUs::where('active_status', 1)->first());
+        $faqs        = \Illuminate\Support\Facades\Cache::rememberForever('frontend_faqs', fn() => Faq::where('active_status', 1)->get());
 
         return view('frontend.home', compact('heroes', 'countries', 'services', 'processes', 'testimonials', 'cta', 'about', 'faqs'));
     }
 
     public function about()
     {
-        $about = AboutUs::where('active_status', 1)->first();
-        $faqs = Faq::where('active_status', 1)->get();
+        $about = \Illuminate\Support\Facades\Cache::rememberForever('frontend_about', fn() => AboutUs::where('active_status', 1)->first());
+        $faqs = \Illuminate\Support\Facades\Cache::rememberForever('frontend_faqs', fn() => Faq::where('active_status', 1)->get());
         return view('frontend.pages.about', compact('about', 'faqs'));
     }
 
     public function services()
     {
-        $services = Service::where('active_status', 1)->get();
+        $services = \Illuminate\Support\Facades\Cache::rememberForever('frontend_services', fn() => Service::where('active_status', 1)->get());
         return view('frontend.pages.service', compact('services'));
     }
 
     public function countries()
     {
-        $countries = Country::where('active_status', 1)->get();
+        $countries = \Illuminate\Support\Facades\Cache::rememberForever('frontend_countries', fn() => Country::where('active_status', 1)->get());
         return view('frontend.pages.countries', compact('countries'));
     }
 
@@ -55,8 +55,8 @@ class HomeController extends Controller
 
     public function faq()
     {
-        $faqs = Faq::where('active_status', 1)->get();
-        $cta  = Cta::where('active_status', 1)->first();
+        $faqs = \Illuminate\Support\Facades\Cache::rememberForever('frontend_faqs', fn() => Faq::where('active_status', 1)->get());
+        $cta  = \Illuminate\Support\Facades\Cache::rememberForever('frontend_cta', fn() => Cta::where('active_status', 1)->first());
         return view('frontend.pages.faq', compact('faqs', 'cta'));
     }
 

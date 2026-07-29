@@ -53,7 +53,7 @@
             <div class="form-field"><label>Preferred country</label>
               <select name="preferred_country" required>
                 <option value="">Select a country</option>
-                @php $applyCountries = \App\Models\Country::where('active_status', 1)->get(); @endphp
+                @php $applyCountries = \Illuminate\Support\Facades\Cache::rememberForever('frontend_apply_countries', fn() => \App\Models\Country::where('active_status', 1)->get()); @endphp
                 @foreach($applyCountries as $c)
                 <option value="{{ $c->name }}">{{ $c->flag_icon }} {{ $c->name }}</option>
                 @endforeach

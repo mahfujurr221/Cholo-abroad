@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Setting extends Model
 {
+    use \App\Traits\ClearsFrontendCache;
     use HasFactory;
     protected $guarded = [];
 }

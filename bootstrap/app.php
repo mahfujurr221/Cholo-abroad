@@ -15,7 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'cache.page' => \App\Http\Middleware\CacheResponse::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>@yield('title', 'Cholo Abroad — Study & Visa Consultants')</title>
 
 <!-- Favicon -->
@@ -12,10 +13,22 @@
     <link rel="shortcut icon" href="{{ asset('backend/images/default_favicon.png') }}">
 @endif
 
-<!-- Fonts (from index.html) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Hind+Siliguri:wght@500;600;700&display=swap">
+<!-- DNS Prefetch for faster external resource resolution -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Extracted CSS -->
+<!-- Preload critical assets -->
+<link rel="preload" href="{{ asset('frontend/assets/css/style.css') }}" as="style">
+<link rel="preload" href="{{ asset('frontend/assets/js/main.js') }}" as="script">
+
+<!-- Fonts (async/non-render-blocking) -->
+<link rel="stylesheet" media="print" onload="this.media='all'; this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Hind+Siliguri:wght@500;600;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Hind+Siliguri:wght@500;600;700&display=swap"></noscript>
+
+<!-- Main CSS -->
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
 @stack('css')
 

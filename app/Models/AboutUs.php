@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AboutUs extends Model
 {
+    use \App\Traits\ClearsFrontendCache;
+    use HasFactory;
+    
     protected $guarded = ['id'];
 }
-
