@@ -53,6 +53,13 @@ class HomeController extends Controller
         return view('frontend.pages.contact');
     }
 
+    public function faq()
+    {
+        $faqs = Faq::where('active_status', 1)->get();
+        $cta  = Cta::where('active_status', 1)->first();
+        return view('frontend.pages.faq', compact('faqs', 'cta'));
+    }
+
     public function apply()
     {
         return view('frontend.pages.apply');

@@ -108,31 +108,6 @@
   </div>
 </section>
 
-@if(isset($faqs) && $faqs->count() > 0)
-<!-- FAQS -->
-<section class="sec tight" style="background:var(--bg);">
-  <div class="wrap">
-    <div class="sec-head center">
-      <div class="eyebrow-label">Common questions</div>
-      <h2>Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-list" style="max-width:780px; margin:0 auto;">
-      @foreach($faqs as $faq)
-      <div class="faq-item">
-        <div class="faq-q">
-          <h3>{{ $faq->question }}</h3>
-          <div class="plus"></div>
-        </div>
-        <div class="faq-a">
-          <p>{!! nl2br(e($faq->answer)) !!}</p>
-        </div>
-      </div>
-      @endforeach
-    </div>
-  </div>
-</section>
-@endif
-
 <!-- CTA -->
 <section class="cta-sec">
   <div class="cta-box">

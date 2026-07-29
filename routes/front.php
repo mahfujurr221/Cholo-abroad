@@ -9,6 +9,7 @@ Route::name('frontend.')->group(function () {
         Route::get('/about', 'about')->name('about');
         Route::get('/services', 'services')->name('services');
         Route::get('/countries', 'countries')->name('countries');
+        Route::get('/faq', 'faq')->name('faq');
         Route::get('/contact', 'contact')->name('contact');
         
         // Application Form

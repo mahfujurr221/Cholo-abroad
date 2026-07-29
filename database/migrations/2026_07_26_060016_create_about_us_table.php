@@ -25,6 +25,13 @@ return new class extends Migration
             $table->string('image2', 255)->nullable();
             $table->string('video_url', 255)->nullable();
             
+            $table->string('value_1_title', 255)->nullable();
+            $table->text('value_1_desc')->nullable();
+            $table->string('value_2_title', 255)->nullable();
+            $table->text('value_2_desc')->nullable();
+            $table->string('value_3_title', 255)->nullable();
+            $table->text('value_3_desc')->nullable();
+            
             $table->tinyInteger('active_status')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
