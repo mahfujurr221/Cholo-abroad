@@ -30,10 +30,10 @@
                             <x-modern.input type="textarea" label="Short Description (Bangla)" name="short_description_bn" placeholder="Enter Short Description (Bangla)" :value="old('short_description_bn', $service->short_description_bn)" rows="3"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Description" name="description" placeholder="Enter Description" :value="old('description', $service->description)" rows="3"  />
+                            <x-modern.input type="textarea" class="summernote" label="Description" name="description" placeholder="Enter Description" :value="old('description', $service->description)" rows="3"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Description (Bangla)" name="description_bn" placeholder="Enter Description (Bangla)" :value="old('description_bn', $service->description_bn)" rows="3"  />
+                            <x-modern.input type="textarea" class="summernote" label="Description (Bangla)" name="description_bn" placeholder="Enter Description (Bangla)" :value="old('description_bn', $service->description_bn)" rows="3"  />
                         </div>
                         <div class="col-md-6">
                             <x-modern.input label="Icon Class / File" name="icon" placeholder="Enter Icon Class / File" :value="old('icon', $service->icon)"  />

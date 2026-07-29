@@ -23,10 +23,10 @@
                             <x-modern.input label="Title (Bangla)" name="title_bn" placeholder="Enter Title (Bangla)" :value="old('title_bn')"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Description" name="description" placeholder="Enter Description" :value="old('description')" rows="3"  />
+                            <x-modern.input type="textarea" class="summernote" label="Description" name="description" placeholder="Enter Description" :value="old('description')" rows="3"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Description (Bangla)" name="description_bn" placeholder="Enter Description (Bangla)" :value="old('description_bn')" rows="3"  />
+                            <x-modern.input type="textarea" class="summernote" label="Description (Bangla)" name="description_bn" placeholder="Enter Description (Bangla)" :value="old('description_bn')" rows="3"  />
                         </div>
                         <div class="col-md-6">
                             <x-modern.input label="Icon Class / File" name="icon" placeholder="Enter Icon Class / File" :value="old('icon')"  />

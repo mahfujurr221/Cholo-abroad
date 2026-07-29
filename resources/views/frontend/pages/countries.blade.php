@@ -21,7 +21,7 @@
         <img src="{{ $country->image ? asset('uploads/' . $country->image) : 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=500&auto=format&fit=crop' }}" alt="{{ $country->name }}">
         <div class="cc-badge">96% approval</div>
         <div class="cc-corner tl"></div><div class="cc-corner br"></div>
-        <div class="cc-info"><b>{{ $country->name }}</b><span>{{ Str::limit($country->description, 50) }}</span></div>
+        <div class="cc-info"><b>{{ $country->name }}</b><span>{!! Str::limit(strip_tags($country->description), 50) !!}</span></div>
       </a>
       @endforeach
     </div>

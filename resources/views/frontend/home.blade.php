@@ -40,7 +40,7 @@
         <div>
           <div class="hero-eyebrow"><span class="dot"></span> {{ $hero->subtitle }}</div>
           <h1>{!! nl2br(e($hero->title)) !!}</h1>
-          <p class="sub">{{ $hero->description }}</p>
+          <p class="sub">{!! $hero->description !!}</p>
           <div class="hero-ctas">
             <a href="{{ $hero->button_link ?? route('frontend.apply') }}" class="btn-primary">{{ $hero->button_text ?? 'Start free assessment' }}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -111,7 +111,7 @@
         <div class="cc-corner tl"></div><div class="cc-corner br"></div>
         <div class="cc-info">
           <b>{{ $country->flag_icon }} {{ $country->name }}</b>
-          <span>{{ Str::limit($country->description, 45) }}</span>
+          <span>{!! Str::limit(strip_tags($country->description), 45) !!}</span>
         </div>
       </a>
       @endforeach
@@ -164,7 +164,7 @@
       <div class="process-step">
           <div class="process-num">0{{ $process->step_number }}</div>
           <h3>{{ $process->title }}</h3>
-          <p>{{ $process->description }}</p>
+          <div>{!! $process->description !!}</div>
       </div>
       @endforeach
     </div>

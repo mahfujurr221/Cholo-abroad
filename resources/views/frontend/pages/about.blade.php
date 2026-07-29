@@ -91,18 +91,18 @@
     <div class="value-grid">
       <div class="value-card">
         <div class="value-num">01</div>
-        <h3>One counsellor, one file</h3>
-        <p>Your case is never split across departments — the person who takes your first call is the one who sees you through to departure.</p>
+        <h3>{{ $about->value_1_title ?? 'One counsellor, one file' }}</h3>
+        <div>{!! $about->value_1_desc ?? '<p>Your case is never split across departments — the person who takes your first call is the one who sees you through to departure.</p>' !!}</div>
       </div>
       <div class="value-card">
         <div class="value-num">02</div>
-        <h3>Fixed fees, upfront</h3>
-        <p>You see the full cost breakdown before signing anything — no surprise charges mid-process.</p>
+        <h3>{{ $about->value_2_title ?? 'Fixed fees, upfront' }}</h3>
+        <div>{!! $about->value_2_desc ?? '<p>You see the full cost breakdown before signing anything — no surprise charges mid-process.</p>' !!}</div>
       </div>
       <div class="value-card">
         <div class="value-num">03</div>
-        <h3>Honest eligibility calls</h3>
-        <p>If your profile is a weak fit for a country, we say so in the free assessment — not after you've paid.</p>
+        <h3>{{ $about->value_3_title ?? 'Honest eligibility calls' }}</h3>
+        <div>{!! $about->value_3_desc ?? '<p>If your profile is a weak fit for a country, we say so in the free assessment — not after you\'ve paid.</p>' !!}</div>
       </div>
     </div>
   </div>

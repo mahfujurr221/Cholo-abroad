@@ -27,7 +27,7 @@
     <!-- select2 css -->
     <link rel="stylesheet" href="{{ asset('backend/css/select2/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/select2/bootstrap-5-theme.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/summernote/summernote-bs5.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
     <!-- App CSS -->
     <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -118,7 +118,7 @@
     <script src="{{ asset('backend/libs/apexcharts/apexcharts.min.js') }}"></script>
     <!-- Dashboard Init -->
     {{-- <script src="{{ asset('backend/js/pages/dashboard.init.js') }}"></script> --}}
-    <script src="{{ asset('backend/js/summernote/summernote-bs5.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
     <script src="{{ asset('backend/js/select2/select2.full.min.js') }}"></script>
     <!-- App JS -->
     <script src="{{ asset('backend/js/app.js') }}"></script>
@@ -149,9 +149,10 @@
     </script>
     <script>
         $('.summernote').summernote({
-            placeholder: 'Hello stand alone ui',
+            placeholder: 'Write your content here...',
             tabsize: 2,
-            height: 120,
+            height: 300,
+            width: '100%',
             toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],

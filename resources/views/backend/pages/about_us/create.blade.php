@@ -20,10 +20,10 @@
                             <x-modern.input label="Title (Bangla)" name="title_bn" placeholder="Enter Title (Bangla)" :value="old('title_bn')"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Description" name="description" placeholder="Enter Description" :value="old('description')" rows="3"  />
+                            <x-modern.input type="textarea" class="summernote" label="Description" name="description" placeholder="Enter Description" :value="old('description')" rows="3"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Description (Bangla)" name="description_bn" placeholder="Enter Description (Bangla)" :value="old('description_bn')" rows="3"  />
+                            <x-modern.input type="textarea" class="summernote" label="Description (Bangla)" name="description_bn" placeholder="Enter Description (Bangla)" :value="old('description_bn')" rows="3"  />
                         </div>
                         <div class="col-md-12">
                             <x-modern.input type="textarea" label="Mission" name="mission" placeholder="Enter Mission" :value="old('mission')" rows="3"  />
@@ -43,7 +43,7 @@
                             <x-modern.input label="Value 1 Title" name="value_1_title" placeholder="Enter Value 1 Title" :value="old('value_1_title')" />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Value 1 Description" name="value_1_desc" placeholder="Enter Value 1 Description" :value="old('value_1_desc')" rows="2" />
+                            <x-modern.input type="textarea" class="summernote" label="Value 1 Description" name="value_1_desc" placeholder="Enter Value 1 Description" :value="old('value_1_desc')" rows="2" />
                         </div>
                         
                         <!-- Value 2 -->
@@ -51,7 +51,7 @@
                             <x-modern.input label="Value 2 Title" name="value_2_title" placeholder="Enter Value 2 Title" :value="old('value_2_title')" />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Value 2 Description" name="value_2_desc" placeholder="Enter Value 2 Description" :value="old('value_2_desc')" rows="2" />
+                            <x-modern.input type="textarea" class="summernote" label="Value 2 Description" name="value_2_desc" placeholder="Enter Value 2 Description" :value="old('value_2_desc')" rows="2" />
                         </div>
                         
                         <!-- Value 3 -->
@@ -59,7 +59,7 @@
                             <x-modern.input label="Value 3 Title" name="value_3_title" placeholder="Enter Value 3 Title" :value="old('value_3_title')" />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Value 3 Description" name="value_3_desc" placeholder="Enter Value 3 Description" :value="old('value_3_desc')" rows="2" />
+                            <x-modern.input type="textarea" class="summernote" label="Value 3 Description" name="value_3_desc" placeholder="Enter Value 3 Description" :value="old('value_3_desc')" rows="2" />
                         </div>
                         <div class="col-md-12">
                             <x-modern.input type="file" label="Image 1" name="image1"  />
