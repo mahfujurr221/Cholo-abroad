@@ -85,6 +85,34 @@ nav{
 .mobile-toggle{display:none; background:none; border:none; cursor:pointer; padding:8px;}
 .mobile-toggle svg{width:24px;height:24px; stroke:var(--navy);}
 
+/* ---------- Apply button shake animation ---------- */
+@keyframes shake{
+  0%,100%{transform:translateX(0) rotate(0);}
+  10%{transform:translateX(-4px) rotate(-1deg);}
+  20%{transform:translateX(4px) rotate(1deg);}
+  30%{transform:translateX(-5px) rotate(-1deg);}
+  40%{transform:translateX(5px) rotate(1deg);}
+  50%{transform:translateX(-4px) rotate(-1deg);}
+  60%{transform:translateX(4px) rotate(0);}
+  70%{transform:translateX(-3px);}
+  80%{transform:translateX(3px);}
+  90%{transform:translateX(-1px);}
+}
+.apply-btn.shaking{animation:shake 0.55s ease;}
+
+/* ---------- Form field validation error ---------- */
+.form-field input.field-error,
+.form-field select.field-error,
+.form-field textarea.field-error{
+  border-color:#e53935 !important;
+  background:#fff5f5 !important;
+  animation:shake 0.4s ease;
+}
+.field-error-msg{
+  color:#e53935; font-size:12.5px; font-weight:600;
+  margin-top:4px; display:block;
+}
+
 /* ---------- PAGE HERO (interior pages) ---------- */
 .page-hero{
   padding:64px 32px 56px; max-width:1200px; margin:0 auto; text-align:center; position:relative;
@@ -478,7 +506,6 @@ footer{background:var(--navy-deep); padding:60px 32px 30px; color:#B7C4DE;}
   .nav-links .dd-menu .seeall{border-top:1px solid var(--line); margin-top:4px; padding-top:10px;}
   .dd.open .dd-menu{display:block;}
   .mobile-toggle{display:block; z-index:201; position:relative;}
-  .apply-btn .apply-text{display:none;}
 
   /* --- HERO --- */
   .hero{grid-template-columns:1fr; padding:40px 24px 48px; gap:32px;}

@@ -67,7 +67,7 @@ class HomeController extends Controller
 
     public function submitApply(Request $request)
     {
-        $validated = $request->validate([
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'name' => 'required|string|max:100',
             'dob' => 'required|date',
             'phone' => 'required|string|max:30',
@@ -80,8 +80,15 @@ class HomeController extends Controller
             'notes' => 'nullable|string',
         ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors()->first()
+            ]);
+        }
+
         try {
-            Application::create($validated);
+            Application::create($validator->validated());
             return response()->json(['status' => 'success', 'message' => 'Application submitted successfully.']);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => 'An error occurred while submitting your application.']);
@@ -90,7 +97,7 @@ class HomeController extends Controller
 
     public function submitContact(Request $request)
     {
-        $validated = $request->validate([
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -98,8 +105,15 @@ class HomeController extends Controller
             'message' => 'required|string',
         ]);
 
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors()->first()
+            ]);
+        }
+
         try {
-            \App\Models\Contact::create($validated);
+            \App\Models\Contact::create($validator->validated());
             return response()->json(['status' => 'success', 'message' => 'Message submitted successfully.']);
         } catch (\Exception $e) {
             return response()->json(['status' => 'error', 'message' => 'An error occurred while submitting your message.']);

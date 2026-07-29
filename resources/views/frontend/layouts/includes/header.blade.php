@@ -30,7 +30,8 @@
       <a href="{{ route('frontend.contact') }}" class="{{ request()->routeIs('frontend.contact') ? 'active' : '' }}">Contact</a>
     </div>
     <button class="mobile-toggle"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-    <a href="{{ route('frontend.apply') }}" class="apply-btn">Apply now
+    <a href="{{ route('frontend.apply') }}" class="apply-btn">
+      <span class="apply-text">Apply now</span>
       <span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
     </a>
   </nav>
