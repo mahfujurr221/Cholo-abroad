@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('description_bn')->nullable();
             $table->string('icon', 100)->nullable();
-            
+            $table->string('color', 50)->nullable();
             $table->tinyInteger('active_status')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

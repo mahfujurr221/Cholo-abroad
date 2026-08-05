@@ -39,7 +39,8 @@ class ProcessController extends Controller
             'title_bn' => 'nullable|max:100',
             'description' => 'nullable',
             'description_bn' => 'nullable',
-            'icon' => 'nullable|max:100'
+            'icon' => 'nullable|max:100',
+            'color' => 'nullable|max:50'
         ]);
         try {
             $data = $request->all();
@@ -68,7 +69,8 @@ class ProcessController extends Controller
             'title_bn' => 'nullable|max:100',
             'description' => 'nullable',
             'description_bn' => 'nullable',
-            'icon' => 'nullable|max:100'
+            'icon' => 'nullable|max:100',
+            'color' => 'nullable|max:50'
         ]);
         try {
             $process = Process::findOrFail($id);

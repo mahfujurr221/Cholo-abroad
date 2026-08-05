@@ -172,18 +172,28 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec-head">
-
       <h2>{!! setting()->process_title ?? "From first call to boarding pass" !!}</h2>
-      <p>{!! setting()->process_subtitle ?? "A fixed four-step process — you always know what stage your file is at." !!}</p>
+      <p>{!! setting()->process_subtitle ?? "With PFEC Global by your side, you can make the whole process a breeze!" !!}</p>
     </div>
-    <div class="process-row">
-      @foreach($processes as $process)
-      <div class="process-step">
-          <div class="process-num">0{{ $process->step_number }}</div>
-          <h3>{{ $process->title }}</h3>
-          <div>{!! $process->description !!}</div>
+    
+    <div class="roadmap-container">
+      
+      @foreach($processes as $index => $process)
+      <div class="roadmap-step">
+          <div class="rs-box">
+             <div class="rs-icon-wrap">
+                 <div class="rs-icon-bg" style="{{ $process->color ? 'background: linear-gradient(135deg, '.$process->color.', '.$process->color.'d9);' : '' }}"></div>
+                 <i class="{{ $process->icon ?: 'bx bx-star' }}"></i>
+             </div>
+             <div class="rs-content">
+                 <div class="rs-step-label" style="{{ $process->color ? 'color: '.$process->color.';' : '' }}">Step {{ $process->step_number }}</div>
+                 <h3 title="{{ $process->title }}">{{ \Illuminate\Support\Str::limit($process->title, 25, '...') }}</h3>
+                 <p>{!! strip_tags($process->description) !!}</p>
+             </div>
+          </div>
       </div>
       @endforeach
+      
     </div>
   </div>
 </section>
