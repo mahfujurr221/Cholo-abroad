@@ -68,6 +68,8 @@ class DatabaseSeeder extends Seeder
             'faq_subtitle' => 'Everything you need to know about our services, visa processes, and what to expect when you apply with us.',
             'contact_title' => 'Talk to a <span style="color:var(--sky)">counsellor</span> directly',
             'contact_subtitle' => 'Visit our Dhaka office, call, or send a message — we reply within one business day.',
+            'partners_title' => 'Our Global University Partners',
+            'partners_subtitle' => 'We collaborate with top-tier institutions worldwide to bring you the best educational opportunities and support your journey from start to finish.',
         ]);
 
         // Assigning roles to users
@@ -85,6 +87,7 @@ class DatabaseSeeder extends Seeder
             CtaSeeder::class,
             AboutUsSeeder::class,
             FaqSeeder::class,
+            PartnerSeeder::class,
         ]);
     }
 }

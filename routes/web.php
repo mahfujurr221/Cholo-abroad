@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\ApplicationController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\PartnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,7 @@ Route::prefix('back')->middleware(['auth'])->group(function () {
     Route::resource('ctas', CtaController::class)->except(['show']);
     Route::resource('about-us', AboutUsController::class)->except(['show']);
     Route::resource('faqs', FaqController::class)->except(['show']);
+    Route::resource('partners', PartnerController::class)->except(['show']);
     Route::resource('contacts', ContactController::class)->only(['index', 'show', 'destroy']);
     
     /////////////// Applications ///////////////

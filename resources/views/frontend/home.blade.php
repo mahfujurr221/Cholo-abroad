@@ -102,7 +102,7 @@
 </div> --}}
 
 <!-- COUNTRIES -->
-<section class="sec" id="countries">
+<section class="sec" id="countries" style="background:#ffffff;">
   <div class="wrap">
     <div class="sec-head">
 
@@ -138,6 +138,8 @@
     </div>
   </div>
 </section>
+
+
 
 <!-- SERVICES -->
 <section class="sec services-sec" id="services">
@@ -198,6 +200,28 @@
   </div>
 </section>
 
+
+<!-- PARTNERS -->
+@if($partners->count() > 0)
+<section class="sec" style="background:#ffffff;">
+  <div class="wrap">
+    <div class="sec-head center">
+      <h2 style="font-size:38px; color:#1C2646; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">{!! setting()->partners_title ?? "Australian Institutions" !!}</h2>
+      <p style="color:#5D6D86; font-size:15px; max-width:680px; margin:0 auto; line-height:1.6;">{!! setting()->partners_subtitle ?? "We help international students explore Australian programs, get expert help, and apply with confidence. With Real Support From Start to Finish" !!}</p>
+    </div>
+    
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:40px; margin-top:40px; opacity:0.8;">
+      @foreach($partners as $partner)
+        @if($partner->logo)
+          <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}" style="max-height:50px; max-width:180px; object-fit:contain; filter:grayscale(100%); transition:all 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.8'">
+        @else
+          <span style="font-weight:600; color:#5D6D86; font-size:16px;">{{ $partner->name }}</span>
+        @endif
+      @endforeach
+    </div>
+  </div>
+</section>
+@endif
 
 <!-- TESTIMONIAL -->
 @if($testimonials->count() > 0)

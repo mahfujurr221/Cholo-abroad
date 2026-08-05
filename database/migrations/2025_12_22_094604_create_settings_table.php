@@ -55,6 +55,8 @@ return new class extends Migration
             $table->text('faq_subtitle')->nullable();
             $table->string('contact_title')->nullable();
             $table->text('contact_subtitle')->nullable();
+            $table->string('partners_title')->nullable();
+            $table->text('partners_subtitle')->nullable();
             $table->timestamps();
         });
     }

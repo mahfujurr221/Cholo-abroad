@@ -56,6 +56,7 @@ class RolePermissionSeeder extends Seeder
             'list-cta', 'create-cta', 'edit-cta', 'delete-cta',
             'list-aboutus', 'create-aboutus', 'edit-aboutus', 'delete-aboutus',
             'list-faq', 'create-faq', 'edit-faq', 'delete-faq',
+            'list-partner', 'create-partner', 'edit-partner', 'delete-partner',
             
             // Contacts
             'list-contact', 'delete-contact',

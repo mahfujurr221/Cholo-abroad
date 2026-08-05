@@ -12,6 +12,7 @@ use App\Models\Cta;
 use App\Models\AboutUs;
 use App\Models\Faq;
 use App\Models\Application;
+use App\Models\Partner;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,9 @@ class HomeController extends Controller
         $cta         = \Illuminate\Support\Facades\Cache::rememberForever('frontend_cta', fn() => Cta::where('active_status', 1)->first());
         $about       = \Illuminate\Support\Facades\Cache::rememberForever('frontend_about', fn() => AboutUs::where('active_status', 1)->first());
         $faqs        = \Illuminate\Support\Facades\Cache::rememberForever('frontend_faqs', fn() => Faq::where('active_status', 1)->get());
+        $partners    = \Illuminate\Support\Facades\Cache::rememberForever('frontend_partners', fn() => Partner::orderBy('id', 'desc')->get());
 
-        return view('frontend.home', compact('heroes', 'countries', 'services', 'processes', 'testimonials', 'cta', 'about', 'faqs'));
+        return view('frontend.home', compact('heroes', 'countries', 'services', 'processes', 'testimonials', 'cta', 'about', 'faqs', 'partners'));
     }
 
     public function about()

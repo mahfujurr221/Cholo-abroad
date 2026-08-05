@@ -236,6 +236,34 @@
                     </ul>
                 </li>
                 @endcanany
+
+                @canany(['list-partner', 'create-partner'])
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow"
+                        aria-expanded="{{ Route::is('partners.*') ? 'true' : 'false' }}">
+                        <i data-feather="briefcase"></i>
+                        <span>Partners</span>
+                    </a>
+                    <ul class="sub-menu {{ Route::is('partners.*') ? 'show' : '' }}">
+                        @can('create-partner')
+                        <li>
+                            <a href="{{ route('partners.create') }}"
+                                class="{{ Route::currentRouteName() == 'partners.create' ? 'active' : '' }}">
+                                Add Partner
+                            </a>
+                        </li>
+                        @endcan
+                        @can('list-partner')
+                        <li>
+                            <a href="{{ route('partners.index') }}"
+                                class="{{ Route::currentRouteName() == 'partners.index' ? 'active' : '' }}">
+                                Partners List
+                            </a>
+                        </li>
+                        @endcan
+                    </ul>
+                </li>
+                @endcanany
                 
                 @can('list-application')
                 <li>

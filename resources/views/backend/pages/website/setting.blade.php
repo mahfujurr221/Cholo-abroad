@@ -317,6 +317,17 @@
                             <div class="col-md-12">
                                 <x-modern.input type="textarea" rows="2" label="Contact Subtitle" name="contact_subtitle" :value="$setting->contact_subtitle" icon="bx bx-paragraph" placeholder="e.g. Visit our Dhaka office..." />
                             </div>
+
+                            <!-- Partners -->
+                            <div class="col-12 mt-4">
+                                <h6 class="text-primary border-bottom pb-2 mb-3">Partners Section</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input label="Partners Title" name="partners_title" :value="$setting->partners_title" icon="bx bx-heading" placeholder="e.g. Our Global University Partners" />
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input type="textarea" rows="2" label="Partners Subtitle" name="partners_subtitle" :value="$setting->partners_subtitle" icon="bx bx-paragraph" placeholder="e.g. We collaborate with top-tier institutions worldwide..." />
+                            </div>
                         </div>
 
                         <div class="mt-5 text-center">

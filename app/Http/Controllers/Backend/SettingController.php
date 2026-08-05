@@ -104,6 +104,8 @@ class SettingController extends Controller
             $setting->faq_subtitle = $request->faq_subtitle;
             $setting->contact_title = $request->contact_title;
             $setting->contact_subtitle = $request->contact_subtitle;
+            $setting->partners_title = $request->partners_title;
+            $setting->partners_subtitle = $request->partners_subtitle;
             
             toast('Section titles updated successfully!', 'success');
         }
