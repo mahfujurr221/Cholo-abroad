@@ -44,6 +44,9 @@ Route::prefix('back')->middleware(['auth'])->group(function () {
     /////////////// CMS Modules ///////////////
     Route::resource('heroes', HeroController::class)->except(['show']);
     Route::resource('countries', CountryController::class)->except(['show']);
+    Route::get('countries/{id}/faqs', [CountryController::class, 'faqs'])->name('countries.faqs');
+    Route::post('countries/{id}/faqs', [CountryController::class, 'faqStore'])->name('countries.faqs.store');
+    Route::delete('countries/{id}/faqs/{faqId}', [CountryController::class, 'faqDestroy'])->name('countries.faqs.destroy');
     Route::resource('services', ServiceController::class)->except(['show']);
     Route::resource('processes', ProcessController::class)->except(['show']);
     Route::resource('testimonials', TestimonialController::class)->except(['show']);

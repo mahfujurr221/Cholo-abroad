@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'info@choloabroad.com',
             'phone' => '+8801887-275766',
             'address' => 'House 14, Road 9, Sector 4, Uttara, Dhaka 1230, Bangladesh',
-            'footer_text' => '© ' . date('Y') . ' Cholo Abroad — স্বপ্ন বিদেশে, শিকড় এদেশে. All rights reserved.',
+            'footer_text' => '© '.date('Y').' Cholo Abroad — স্বপ্ন বিদেশে, শিকড় এদেশে. All rights reserved.',
             'footer_description' => 'Study, work, and settlement visa consultancy helping Bangladeshi students and professionals move abroad with confidence.',
             'newslatter_text' => 'Get weekly visa tips and intake alerts straight to your inbox.',
             'facebook' => 'https://www.facebook.com/choloabroad',

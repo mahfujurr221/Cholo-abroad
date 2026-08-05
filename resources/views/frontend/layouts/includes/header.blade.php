@@ -14,14 +14,23 @@
         <div class="dd-trigger">Country <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
         <div class="dd-menu">
           @php
-             $headerCountries = \Illuminate\Support\Facades\Cache::rememberForever('frontend_header_countries', fn() => \App\Models\Country::where('active_status', 1)->take(4)->get());
+             $headerCountries = \Illuminate\Support\Facades\Cache::rememberForever('frontend_header_countries', fn() => \App\Models\Country::where('active_status', 1)->get());
           @endphp
           @foreach($headerCountries as $country)
-              <a href="{{ route('frontend.countries') }}#{{ Str::slug($country->name) }}">
-                  <span class="fdot" style="background:var(--sky)"></span>{{ $country->name }}
+              <a href="{{ route('frontend.country.detail', $country->slug) }}">
+                  @if($country->flag_icon)
+                      @if(preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $country->flag_icon))
+                          <img src="{{ asset('uploads/countries/' . $country->flag_icon) }}" style="width: 18px; height: 18px; border-radius: 50%; object-fit: cover;">
+                      @else
+                          <span style="font-size: 16px; line-height: 1;">{{ $country->flag_icon }}</span>
+                      @endif
+                  @else
+                      <span class="fdot" style="background:var(--sky)"></span>
+                  @endif
+                  {{ $country->name }}
               </a>
           @endforeach
-          <a href="{{ route('frontend.countries') }}" class="seeall">See all countries &rarr;</a>
+          <a href="{{ route('frontend.countries') }}" class="seeall">View all destinations &rarr;</a>
         </div>
       </div>
       <a href="{{ route('frontend.services') }}" class="{{ request()->routeIs('frontend.services') ? 'active' : '' }}">Service</a>

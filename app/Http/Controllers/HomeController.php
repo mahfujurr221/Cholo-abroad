@@ -25,7 +25,7 @@ class HomeController extends Controller
         $testimonials = \Illuminate\Support\Facades\Cache::rememberForever('frontend_testimonials', fn() => Testimonial::where('active_status', 1)->get());
         $cta         = \Illuminate\Support\Facades\Cache::rememberForever('frontend_cta', fn() => Cta::where('active_status', 1)->first());
         $about       = \Illuminate\Support\Facades\Cache::rememberForever('frontend_about', fn() => AboutUs::where('active_status', 1)->first());
-        $faqs        = \Illuminate\Support\Facades\Cache::rememberForever('frontend_faqs', fn() => Faq::where('active_status', 1)->get());
+        $faqs        = \Illuminate\Support\Facades\Cache::rememberForever('frontend_faqs', fn() => Faq::global()->where('active_status', 1)->get());
         $partners    = \Illuminate\Support\Facades\Cache::rememberForever('frontend_partners', fn() => Partner::orderBy('id', 'desc')->get());
 
         return view('frontend.home', compact('heroes', 'countries', 'services', 'processes', 'testimonials', 'cta', 'about', 'faqs', 'partners'));
@@ -57,9 +57,18 @@ class HomeController extends Controller
 
     public function faq()
     {
-        $faqs = \Illuminate\Support\Facades\Cache::rememberForever('frontend_faqs', fn() => Faq::where('active_status', 1)->get());
+        $faqs = \Illuminate\Support\Facades\Cache::rememberForever('frontend_faqs', fn() => Faq::global()->where('active_status', 1)->get());
         $cta  = \Illuminate\Support\Facades\Cache::rememberForever('frontend_cta', fn() => Cta::where('active_status', 1)->first());
         return view('frontend.pages.faq', compact('faqs', 'cta'));
+    }
+
+    public function countryDetail($slug)
+    {
+        $country   = Country::where('slug', $slug)->where('active_status', 1)->firstOrFail();
+        $faqs      = Faq::forCountry($country->id)->where('active_status', 1)->orderBy('id')->get();
+        $countries = \Illuminate\Support\Facades\Cache::rememberForever('frontend_countries', fn() => Country::where('active_status', 1)->get());
+        $cta       = \Illuminate\Support\Facades\Cache::rememberForever('frontend_cta', fn() => Cta::where('active_status', 1)->first());
+        return view('frontend.pages.country-detail', compact('country', 'faqs', 'countries', 'cta'));
     }
 
     public function apply()

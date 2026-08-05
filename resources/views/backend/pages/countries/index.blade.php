@@ -30,6 +30,7 @@
             <td class="align-middle">
                 <div class="d-flex gap-2">
                     @can('edit-country')
+                    <x-modern.actions.button tag="a" href="{{ route('countries.faqs', $item->id) }}" actionType="custom" label="FAQs" icon="bx bx-help-circle" variant="info" outline size="sm" />
                     <x-modern.actions.button tag="a" href="{{ route('countries.edit', $item->id) }}" actionType="edit" outline />
                     @endcan
                     @can('delete-country')

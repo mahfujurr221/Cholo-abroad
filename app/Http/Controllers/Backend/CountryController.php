@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\Faq;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -132,6 +133,53 @@ class CountryController extends Controller
             $country->delete();
             toast('Country Deleted Successfully!', 'success');
             return redirect()->route('countries.index');
+        } catch (\Exception $e) {
+            toast('Something went wrong!', 'error');
+            return back();
+        }
+    }
+
+    // ─── Country FAQ Management ─────────────────────────────────────────
+
+    public function faqs(string $id)
+    {
+        $country = Country::findOrFail($id);
+        $faqs    = Faq::forCountry($id)->orderBy('id', 'desc')->get();
+        return view('backend.pages.countries.faqs', compact('country', 'faqs'));
+    }
+
+    public function faqStore(Request $request, string $id)
+    {
+        $request->validate([
+            'question'  => 'required|max:500',
+            'answer'    => 'required',
+        ]);
+        try {
+            $country = Country::findOrFail($id);
+            Faq::create([
+                'country_id'    => $country->id,
+                'question'      => $request->question,
+                'answer'        => $request->answer,
+                'active_status' => 1,
+                'created_by'    => Auth::id(),
+            ]);
+            \Illuminate\Support\Facades\Cache::forget('frontend_countries');
+            toast('FAQ Added Successfully!', 'success');
+            return redirect()->route('countries.faqs', $id);
+        } catch (\Exception $e) {
+            toast('Something went wrong!', 'error');
+            return back()->withInput();
+        }
+    }
+
+    public function faqDestroy(string $id, string $faqId)
+    {
+        try {
+            $faq = Faq::where('id', $faqId)->where('country_id', $id)->firstOrFail();
+            $faq->delete();
+            \Illuminate\Support\Facades\Cache::forget('frontend_countries');
+            toast('FAQ Deleted Successfully!', 'success');
+            return redirect()->route('countries.faqs', $id);
         } catch (\Exception $e) {
             toast('Something went wrong!', 'error');
             return back();

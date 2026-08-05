@@ -111,7 +111,7 @@
     </div>
     <div class="countries-grid">
       @foreach($countries->take(4) as $country)
-      <a class="country-card" href="{{ route('frontend.countries') }}#{{ Str::slug($country->name) }}">
+      <a class="country-card" href="{{ route('frontend.country.detail', $country->slug) }}">
         <img src="{{ $country->image ? asset('uploads/countries/' . $country->image) : 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=500&auto=format&fit=crop' }}" alt="{{ $country->name }}">
         @if($country->approval_rate)
           <div class="cc-badge">{{ $country->approval_rate }} approval</div>

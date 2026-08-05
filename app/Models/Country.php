@@ -12,6 +12,10 @@ class Country extends Model
 
     protected $guarded = [];
 
+    public function faqs()
+    {
+        return $this->hasMany(Faq::class)->where('active_status', 1)->orderBy('id');
+    }
 }
 
 

@@ -71,5 +71,48 @@ class FaqSeeder extends Seeder
         foreach ($faqs as $faq) {
             Faq::create($faq);
         }
+
+        // Add some country-specific FAQs
+        $canada = \App\Models\Country::where('slug', 'canada')->first();
+        if ($canada) {
+            Faq::create([
+                'country_id' => $canada->id,
+                'question' => 'Can I work in Canada while studying?',
+                'answer' => 'Yes, international students in Canada can work up to 20 hours per week during academic sessions and full-time during scheduled breaks.',
+                'active_status' => 1,
+            ]);
+            Faq::create([
+                'country_id' => $canada->id,
+                'question' => 'What is the Post-Graduation Work Permit (PGWP)?',
+                'answer' => 'The PGWP allows students who have graduated from eligible Canadian designated learning institutions to obtain an open work permit to gain valuable Canadian work experience.',
+                'active_status' => 1,
+            ]);
+        }
+
+        $uk = \App\Models\Country::where('slug', 'united-kingdom')->first();
+        if ($uk) {
+            Faq::create([
+                'country_id' => $uk->id,
+                'question' => 'What is the Graduate Route visa in the UK?',
+                'answer' => 'The Graduate Route visa allows international students to stay in the UK and work, or look for work, for two years (three years for PhD students) after successfully completing their studies.',
+                'active_status' => 1,
+            ]);
+            Faq::create([
+                'country_id' => $uk->id,
+                'question' => 'Can I bring my family with me to the UK?',
+                'answer' => 'If you are studying a postgraduate degree that lasts 9 months or longer, or a government-sponsored program, you may be able to bring your spouse and children as dependents.',
+                'active_status' => 1,
+            ]);
+        }
+
+        $australia = \App\Models\Country::where('slug', 'australia')->first();
+        if ($australia) {
+            Faq::create([
+                'country_id' => $australia->id,
+                'question' => 'What are the post-study work rights in Australia?',
+                'answer' => 'Australia offers a Temporary Graduate visa (subclass 485) that allows international students to live, study, and work in Australia temporarily after finishing their studies. The duration depends on your qualifications.',
+                'active_status' => 1,
+            ]);
+        }
     }
 }
