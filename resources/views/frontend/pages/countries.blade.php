@@ -7,8 +7,8 @@
 <div class="page-hero">
   {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">Country</span></div> --}}
 
-  <h1>Where do you want to <span style="color:var(--sky)">land</span>?</h1>
-  <p>Every country has its own visa track, intake season, and cost of living. Explore the destination that fits your goal.</p>
+  <h1>{!! setting()->countries_title ?? 'Where do you want to <span style="color:var(--sky)">land</span>?' !!}</h1>
+  <p>{!! setting()->countries_subtitle ?? 'Every country has its own visa track, intake season, and cost of living. Explore the destination that fits your goal.' !!}</p>
 </div>
 
 <section class="sec tight">

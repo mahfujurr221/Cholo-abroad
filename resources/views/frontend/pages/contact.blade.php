@@ -7,8 +7,8 @@
 <div class="page-hero">
   {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">Contact</span></div> --}}
 
-  <h1>Talk to a <span style="color:var(--sky)">counsellor</span> directly</h1>
-  <p>Visit our Dhaka office, call, or send a message — we reply within one business day.</p>
+  <h1>{!! setting()->contact_title ?? 'Talk to a <span style="color:var(--sky)">counsellor</span> directly' !!}</h1>
+  <p>{!! setting()->contact_subtitle ?? 'Visit our Dhaka office, call, or send a message — we reply within one business day.' !!}</p>
 </div>
 
 <section class="sec tight">

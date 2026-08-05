@@ -87,6 +87,26 @@ class SettingController extends Controller
             toast('Google map updated successfully!', 'success');
         }
 
+        // section titles
+        if ($request->update_section == 'section_titles') {
+            $setting->countries_title = $request->countries_title;
+            $setting->countries_subtitle = $request->countries_subtitle;
+            $setting->services_title = $request->services_title;
+            $setting->services_subtitle = $request->services_subtitle;
+            $setting->process_title = $request->process_title;
+            $setting->process_subtitle = $request->process_subtitle;
+            $setting->about_title = $request->about_title;
+            $setting->about_subtitle = $request->about_subtitle;
+            $setting->testimonials_title = $request->testimonials_title;
+            $setting->testimonials_subtitle = $request->testimonials_subtitle;
+            $setting->faq_title = $request->faq_title;
+            $setting->faq_subtitle = $request->faq_subtitle;
+            $setting->contact_title = $request->contact_title;
+            $setting->contact_subtitle = $request->contact_subtitle;
+            
+            toast('Section titles updated successfully!', 'success');
+        }
+
         $setting->save();
         return redirect()->route('settings.index');
     }

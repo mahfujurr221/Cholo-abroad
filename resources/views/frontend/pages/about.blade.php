@@ -7,8 +7,8 @@
 <div class="page-hero">
   {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">About</span></div> --}}
 
-  <h1>We've filed the paperwork <span style="color:var(--sky)">so you don't have to</span></h1>
-  <p>{{ $about->mission ?? 'Cholo Abroad started with one frustration: visa consulting in Bangladesh was slow, opaque, and split across too many hands. We built the counsellor-owns-the-file model to fix that.' }}</p>
+  <h1>{!! setting()->about_title ?? 'We\'ve filed the paperwork <span style="color:var(--sky)">so you don\'t have to</span>' !!}</h1>
+  <p>{!! setting()->about_subtitle ?? $about->mission ?? 'Cholo Abroad started with one frustration: visa consulting in Bangladesh was slow, opaque, and split across too many hands. We built the counsellor-owns-the-file model to fix that.' !!}</p>
 </div>
 
 <section class="sec tight">

@@ -32,6 +32,11 @@
                     <i class="bx bx-map me-3"></i>
                     <span>Google Map API</span>
                 </a>
+                <a class="nav-link d-flex align-items-center" id="v-pills-section-titles-tab" data-bs-toggle="pill" href="#v-pills-section-titles"
+                    role="tab" aria-controls="v-pills-section-titles" aria-selected="false">
+                    <i class="bx bx-text me-3"></i>
+                    <span>Section Titles</span>
+                </a>
             </div>
         </x-modern.card>
     </div>
@@ -207,6 +212,100 @@
                             {!! $setting->google_map !!}
                         </div>
                         @endif
+
+                        <div class="mt-5 text-center">
+                            <x-modern.actions.button actionType="update" type="submit" />
+                        </div>
+                    </form>
+                </x-modern.card>
+            </div>
+
+            {{-- Section Titles --}}
+            <div class="tab-pane fade" id="v-pills-section-titles" role="tabpanel" aria-labelledby="v-pills-section-titles-tab">
+                <x-modern.card title="Section Titles & Subtitles" icon="bx bx-text">
+                    <form action="{{ route('settings.update', $setting->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="update_section" value="section_titles">
+                        
+                        <div class="row g-4">
+                            <!-- Countries -->
+                            <div class="col-12">
+                                <h6 class="text-primary border-bottom pb-2 mb-3">Countries Section</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input label="Countries Title" name="countries_title" :value="$setting->countries_title" icon="bx bx-heading" placeholder="e.g. Pick a country..." />
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input type="textarea" rows="2" label="Countries Subtitle" name="countries_subtitle" :value="$setting->countries_subtitle" icon="bx bx-paragraph" placeholder="e.g. Every destination..." />
+                            </div>
+
+                            <!-- Services -->
+                            <div class="col-12 mt-4">
+                                <h6 class="text-primary border-bottom pb-2 mb-3">Services Section</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input label="Services Title" name="services_title" :value="$setting->services_title" icon="bx bx-heading" placeholder="e.g. One consultant..." />
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input type="textarea" rows="2" label="Services Subtitle" name="services_subtitle" :value="$setting->services_subtitle" icon="bx bx-paragraph" placeholder="e.g. No juggling agents..." />
+                            </div>
+
+                            <!-- Route/Process -->
+                            <div class="col-12 mt-4">
+                                <h6 class="text-primary border-bottom pb-2 mb-3">Route / Process Section</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input label="Route/Process Title" name="process_title" :value="$setting->process_title" icon="bx bx-heading" placeholder="e.g. From first call..." />
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input type="textarea" rows="2" label="Route/Process Subtitle" name="process_subtitle" :value="$setting->process_subtitle" icon="bx bx-paragraph" placeholder="e.g. A fixed four-step..." />
+                            </div>
+
+                            <!-- About -->
+                            <div class="col-12 mt-4">
+                                <h6 class="text-primary border-bottom pb-2 mb-3">About Section</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input label="About Title" name="about_title" :value="$setting->about_title" icon="bx bx-heading" placeholder="e.g. Founded by people..." />
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input type="textarea" rows="2" label="About Subtitle" name="about_subtitle" :value="$setting->about_subtitle" icon="bx bx-paragraph" placeholder="e.g. Our journey..." />
+                            </div>
+
+                            <!-- Testimonials -->
+                            <div class="col-12 mt-4">
+                                <h6 class="text-primary border-bottom pb-2 mb-3">Testimonials Section</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input label="Testimonials Title" name="testimonials_title" :value="$setting->testimonials_title" icon="bx bx-heading" placeholder="e.g. Students who trusted us..." />
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input type="textarea" rows="2" label="Testimonials Subtitle" name="testimonials_subtitle" :value="$setting->testimonials_subtitle" icon="bx bx-paragraph" placeholder="e.g. Hear from them..." />
+                            </div>
+
+                            <!-- FAQ -->
+                            <div class="col-12 mt-4">
+                                <h6 class="text-primary border-bottom pb-2 mb-3">FAQ Section</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input label="FAQ Title" name="faq_title" :value="$setting->faq_title" icon="bx bx-heading" placeholder="e.g. Frequently Asked Questions" />
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input type="textarea" rows="2" label="FAQ Subtitle" name="faq_subtitle" :value="$setting->faq_subtitle" icon="bx bx-paragraph" placeholder="e.g. Everything you need to know..." />
+                            </div>
+
+                            <!-- Contact -->
+                            <div class="col-12 mt-4">
+                                <h6 class="text-primary border-bottom pb-2 mb-3">Contact Section</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input label="Contact Title" name="contact_title" :value="$setting->contact_title" icon="bx bx-heading" placeholder="e.g. Talk to a counsellor..." />
+                            </div>
+                            <div class="col-md-12">
+                                <x-modern.input type="textarea" rows="2" label="Contact Subtitle" name="contact_subtitle" :value="$setting->contact_subtitle" icon="bx bx-paragraph" placeholder="e.g. Visit our Dhaka office..." />
+                            </div>
+                        </div>
 
                         <div class="mt-5 text-center">
                             <x-modern.actions.button actionType="update" type="submit" />

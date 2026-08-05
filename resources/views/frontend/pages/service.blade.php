@@ -7,8 +7,8 @@
 <div class="page-hero">
   {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">Service</span></div> --}}
 
-  <h1>Every step of the file, <span style="color:var(--sky)">handled</span></h1>
-  <p>Pick a single service or let one counsellor run the whole route — shortlisting to landing.</p>
+  <h1>{!! setting()->services_title ?? 'Every step of the file, <span style="color:var(--sky)">handled</span>' !!}</h1>
+  <p>{!! setting()->services_subtitle ?? 'Pick a single service or let one counsellor run the whole route — shortlisting to landing.' !!}</p>
 </div>
 
 <section class="sec tight">

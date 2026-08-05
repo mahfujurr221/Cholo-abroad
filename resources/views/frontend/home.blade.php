@@ -106,8 +106,8 @@
   <div class="wrap">
     <div class="sec-head">
 
-      <h2>Pick a country, we'll lock it in</h2>
-      <p>Every destination comes with its own visa category, intake calendar, and success rate — we match you to the one that fits your profile.</p>
+      <h2>{{ setting()->countries_title ?? "Pick a country, we'll lock it in" }}</h2>
+      <p>{{ setting()->countries_subtitle ?? "Every destination comes with its own visa category, intake calendar, and success rate — we match you to the one that fits your profile." }}</p>
     </div>
     <div class="countries-grid">
       @foreach($countries->take(4) as $country)
@@ -144,8 +144,8 @@
   <div class="wrap">
     <div class="sec-head">
 
-      <h2>One consultant, every step of the file</h2>
-      <p>No juggling agents — one dedicated counsellor owns your case from shortlisting to landing.</p>
+      <h2>{{ setting()->services_title ?? "One consultant, every step of the file" }}</h2>
+      <p>{{ setting()->services_subtitle ?? "No juggling agents — one dedicated counsellor owns your case from shortlisting to landing." }}</p>
     </div>
     <div class="services-grid">
       @foreach($services->take(4) as $service)
@@ -173,8 +173,8 @@
   <div class="wrap">
     <div class="sec-head">
 
-      <h2>From first call to boarding pass</h2>
-      <p>A fixed four-step process — you always know what stage your file is at.</p>
+      <h2>{{ setting()->process_title ?? "From first call to boarding pass" }}</h2>
+      <p>{{ setting()->process_subtitle ?? "A fixed four-step process — you always know what stage your file is at." }}</p>
     </div>
     <div class="process-row">
       @foreach($processes as $process)
@@ -202,7 +202,10 @@
       </div>
       <div>
 
-        <h2>{{ $about->title }}</h2>
+        <h2>{{ setting()->about_title ?? $about->title }}</h2>
+        @if(setting()->about_subtitle)
+            <p>{{ setting()->about_subtitle }}</p>
+        @endif
         @if($about->description)
           <p>{{ Str::limit(strip_tags($about->description), 280) }}</p>
         @endif
@@ -240,7 +243,10 @@
   <div class="wrap">
     <div class="sec-head center">
 
-      <h2>Students who trusted us with their future</h2>
+      <h2>{{ setting()->testimonials_title ?? "Students who trusted us with their future" }}</h2>
+      @if(setting()->testimonials_subtitle)
+          <p>{{ setting()->testimonials_subtitle }}</p>
+      @endif
     </div>
     <div class="swiper testi-swiper">
       <div class="swiper-wrapper">
@@ -271,7 +277,10 @@
   <div class="wrap">
     <div class="sec-head center">
 
-      <h2>Frequently Asked Questions</h2>
+      <h2>{{ setting()->faq_title ?? "Frequently Asked Questions" }}</h2>
+      @if(setting()->faq_subtitle)
+          <p>{{ setting()->faq_subtitle }}</p>
+      @endif
     </div>
     <div style="max-width:780px; margin:0 auto;">
       @foreach($faqs->take(5) as $faq)

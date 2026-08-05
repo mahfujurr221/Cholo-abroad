@@ -38,6 +38,22 @@ return new class extends Migration
             $table->json('meta_keywords')->nullable();
             $table->longText('terms_and_conditions')->nullable();
             $table->longText('privacy_policy')->nullable();
+
+            // Section Titles
+            $table->string('countries_title')->nullable();
+            $table->text('countries_subtitle')->nullable();
+            $table->string('services_title')->nullable();
+            $table->text('services_subtitle')->nullable();
+            $table->string('process_title')->nullable();
+            $table->text('process_subtitle')->nullable();
+            $table->string('about_title')->nullable();
+            $table->text('about_subtitle')->nullable();
+            $table->string('testimonials_title')->nullable();
+            $table->text('testimonials_subtitle')->nullable();
+            $table->string('faq_title')->nullable();
+            $table->text('faq_subtitle')->nullable();
+            $table->string('contact_title')->nullable();
+            $table->text('contact_subtitle')->nullable();
             $table->timestamps();
         });
     }
