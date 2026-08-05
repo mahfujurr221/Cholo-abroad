@@ -15,10 +15,13 @@
         @endcan
     </x-slot>
 
-    <x-modern.table :headers="['#', 'title', 'Status', 'Actions']">
+    <x-modern.table :headers="['#', 'Icon', 'Title', 'Status', 'Actions']">
         @forelse($services as $item)
         <tr>
             <td class="align-middle">{{ $loop->iteration + ($services->currentPage() - 1) * $services->perPage() }}</td>
+            <td class="align-middle">
+                <div class="bg-light text-primary d-flex align-items-center justify-content-center rounded border" style="width: 40px; height: 40px;"><i class="{{ $item->icon ?: 'bx bx-star' }} fs-4"></i></div>
+            </td>
             <td class="align-middle">{{ $item->title }}</td>
             <td class="align-middle">
                 @if($item->active_status)
@@ -43,7 +46,7 @@
             </td>
         </tr>
         @empty
-        <tr><td colspan="4" class="text-center p-5 text-muted">No Data Found</td></tr>
+        <tr><td colspan="5" class="text-center p-5 text-muted">No Data Found</td></tr>
         @endforelse
     </x-modern.table>
     <x-modern.pagination :collection="$services" />

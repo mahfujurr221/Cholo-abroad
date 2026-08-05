@@ -18,7 +18,7 @@
       <div class="service-card-light">
         <div class="service-icon">
             @if($service->icon)
-                <img src="{{ asset('uploads/' . $service->icon) }}" alt="{{ $service->title }}" style="width: 24px; height: 24px; filter: invert(0.5) sepia(1) saturate(5) hue-rotate(180deg);">
+                <i class="{{ $service->icon }}" style="font-size: 24px; color: var(--sky);"></i>
             @else
                 <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             @endif

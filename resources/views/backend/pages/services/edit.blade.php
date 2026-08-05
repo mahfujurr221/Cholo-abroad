@@ -35,14 +35,16 @@
                         <div class="col-md-12">
                             <x-modern.input type="textarea" class="summernote" label="Description (Bangla)" name="description_bn" placeholder="Enter Description (Bangla)" :value="old('description_bn', $service->description_bn)" rows="3"  />
                         </div>
-                        <div class="col-md-6">
-                            <x-modern.input label="Icon Class / File" name="icon" placeholder="Enter Icon Class / File" :value="old('icon', $service->icon)"  />
-                        </div>
                         <div class="col-md-12">
-                            <x-modern.input type="file" label="Image (Leave blank to keep current)" name="image" />
-                            @if($service->image)
-                                <div class="mt-2"><img src="{{ asset('uploads/services/' . $service->image) }}" class="img-thumbnail" style="height: 80px;"></div>
-                            @endif
+                            <label class="form-label fw-bold text-dark">Icon Class</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-light text-primary fs-4" id="icon-preview"><i class="{{ old('icon', $service->icon) ?: 'bx bx-star' }}"></i></span>
+                                <input type="text" class="form-control" name="icon" id="icon-input" placeholder="e.g. bx bx-home" value="{{ old('icon', $service->icon) }}">
+                            </div>
+                            <div class="form-text mt-0">
+                                Need icons? <a href="https://boxicons.com/" target="_blank" class="text-primary text-decoration-underline">Find BoxIcons here</a>. 
+                                Popular examples: <code>bx bx-briefcase</code>, <code>bx bx-book-open</code>, <code>bx bx-globe</code>, <code>bx bxs-plane-alt</code>
+                            </div>
                         </div>
                         <div class="col-md-12">
                             <x-modern.select label="Status" name="active_status" :options="['1' => 'Active', '0' => 'Inactive']" :selected="old('active_status', $service->active_status)" required />
@@ -59,3 +61,12 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+    document.getElementById('icon-input').addEventListener('input', function(e) {
+        let val = e.target.value.trim();
+        if(!val) val = 'bx bx-star';
+        document.getElementById('icon-preview').innerHTML = '<i class="' + val + '"></i>';
+    });
+</script>
+@endpush

@@ -9,8 +9,6 @@
 <!-- Favicon -->
 @if(setting() && setting()->favicon)
     <link rel="shortcut icon" href="{{ asset('uploads/' . setting()->favicon) }}">
-@else
-    <link rel="shortcut icon" href="{{ asset('backend/images/default_favicon.png') }}">
 @endif
 
 <!-- DNS Prefetch for faster external resource resolution -->
@@ -29,6 +27,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Hind+Siliguri:wght@500;600;700&display=swap"></noscript>
 
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}?v={{ time() }}">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @stack('css')
 
@@ -38,7 +37,11 @@
 <!-- Preloader -->
 <div id="preloader">
     <div class="loader-content">
-        <img src="{{ asset(setting()->logo ? 'uploads/' . setting()->logo : 'backend/images/bdclean_logo_animated.gif') }}" alt="{{ setting()->site_name ?? 'Cholo Abroad' }}" class="loader-logo">
+        @if(setting() && setting()->logo)
+            <img src="{{ asset('uploads/' . setting()->logo) }}" alt="{{ setting()->site_name ?? 'Cholo Abroad' }}" class="loader-logo">
+        @else
+            <h2 style="color:var(--sky); font-weight:700; margin:0;">{{ setting()->site_name ?? 'Cholo Abroad' }}</h2>
+        @endif
     </div>
 </div>
 

@@ -41,19 +41,13 @@ class ServiceController extends Controller
             'short_description_bn' => 'nullable|max:255',
             'description' => 'nullable',
             'description_bn' => 'nullable',
-            'icon' => 'nullable|max:100',
-            'image' => 'nullable|image|max:2048'
+            'icon' => 'nullable|max:100'
         ]);
         try {
             $data = $request->all();
             $data['created_by'] = Auth::id();
             
-            if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $filename = time() . '_image_' . uniqid() . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('uploads/services/'), $filename);
-                $data['image'] = $filename;
-            }
+            // Image field removed
             Service::create($data);
             toast('Service Created Successfully!', 'success');
             return redirect()->route('services.index');
@@ -79,23 +73,14 @@ class ServiceController extends Controller
             'short_description_bn' => 'nullable|max:255',
             'description' => 'nullable',
             'description_bn' => 'nullable',
-            'icon' => 'nullable|max:100',
-            'image' => 'nullable|image|max:2048'
+            'icon' => 'nullable|max:100'
         ]);
         try {
             $service = Service::findOrFail($id);
             $data = $request->all();
             $data['updated_by'] = Auth::id();
             
-            if ($request->hasFile('image')) {
-                $file = $request->file('image');
-                $filename = time() . '_image_' . uniqid() . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('uploads/services/'), $filename);
-                $data['image'] = $filename;
-                if ($service->image && file_exists(public_path('uploads/services/' . $service->image))) {
-                    unlink(public_path('uploads/services/' . $service->image));
-                }
-            }
+            // Image logic removed
             $service->update($data);
             toast('Service Updated Successfully!', 'success');
             return redirect()->route('services.index');
@@ -110,9 +95,7 @@ class ServiceController extends Controller
         try {
             $service = Service::findOrFail($id);
             
-            if ($service->image && file_exists(public_path('uploads/services/' . $service->image))) {
-                unlink(public_path('uploads/services/' . $service->image));
-            }
+            // File delete logic removed
             $service->delete();
             toast('Service Deleted Successfully!', 'success');
             return redirect()->route('services.index');

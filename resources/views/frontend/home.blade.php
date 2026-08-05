@@ -62,7 +62,7 @@
             <div class="corner bl"></div><div class="corner br"></div>
           </div>
           <div class="hero-card">
-            <img src="{{ $hero->image ? asset('uploads/' . $hero->image) : 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&auto=format&fit=crop' }}" alt="Hero Image">
+            <img src="{{ ($hero->image && file_exists(public_path('uploads/heroes/' . $hero->image))) ? asset('uploads/heroes/' . $hero->image) : 'https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=800&auto=format&fit=crop' }}" alt="Hero Image">
             <div class="tag"><span class="flag"></span> Locked on: Global</div>
             <div class="float-pill">
               <div><b>Study Permit</b><span>Avg. processing — 6 weeks</span></div>
@@ -152,7 +152,7 @@
       <div class="service-card">
         <div class="service-icon">
             @if($service->icon)
-                <img src="{{ asset('uploads/' . $service->icon) }}" alt="{{ $service->title }}" style="width: 24px; height: 24px; filter: invert(1);">
+                <i class="{{ $service->icon }}" style="font-size: 24px; color: #fff;"></i>
             @else
                 <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
             @endif
