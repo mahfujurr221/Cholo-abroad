@@ -198,85 +198,62 @@
   </div>
 </section>
 
-<!-- ABOUT PREVIEW -->
-@if($about)
-<section class="sec" style="background:var(--bg);">
-  <div class="wrap">
-    <div class="about-preview">
-      <div class="visual">
-        <div class="corner tl" style="border-color:var(--sky);"></div>
-        <div class="corner br" style="border-color:var(--gold);"></div>
-        <div class="frame">
-          <img src="{{ $about->image1 ? asset('uploads/'.$about->image1) : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&auto=format&fit=crop' }}" alt="Cholo Abroad team">
-        </div>
-      </div>
-      <div>
-
-        <h2>{!! setting()->about_title ?? $about->title !!}</h2>
-        @if(setting()->about_subtitle)
-            <p>{!! setting()->about_subtitle !!}</p>
-        @endif
-        @if($about->description)
-          <p>{!! Str::limit(strip_tags($about->description), 280) !!}</p>
-        @endif
-        @if($about->mission || $about->vision)
-        <div class="mv-grid">
-          @if($about->mission)
-          <div class="mv-card">
-            <div class="label">Mission</div>
-            <p>{!! Str::limit($about->mission, 100) !!}</p>
-          </div>
-          @endif
-          @if($about->vision)
-          <div class="mv-card">
-            <div class="label">Vision</div>
-            <p>{!! Str::limit($about->vision, 100) !!}</p>
-          </div>
-          @endif
-        </div>
-        @endif
-        <div style="margin-top:28px; display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="{{ route('frontend.about') }}" class="btn-primary">Our story
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <a href="{{ route('frontend.contact') }}" class="btn-ghost">Get in touch</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-@endif
 
 <!-- TESTIMONIAL -->
 @if($testimonials->count() > 0)
-<section class="sec testi-sec">
+<section class="sec testi-sec" style="background:var(--bg);">
   <div class="wrap">
     <div class="sec-head center">
-
       <h2>{!! setting()->testimonials_title ?? "Students who trusted us with their future" !!}</h2>
       @if(setting()->testimonials_subtitle)
           <p>{!! setting()->testimonials_subtitle !!}</p>
       @endif
     </div>
-    <div class="swiper testi-swiper">
-      <div class="swiper-wrapper">
-        @foreach($testimonials as $testi)
-        <div class="swiper-slide">
-          <div class="testi-card">
-            <div class="testi-avatar">
-                <img src="{{ $testi->avatar ? asset('uploads/testimonials/' . $testi->avatar) : 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&auto=format&fit=crop' }}" alt="{{ $testi->name }}">
-            </div>
-            <div>
-              <span class="quote-mark">"</span>
-              <p class="testi-text">{!! $testi->quote !!}</p>
-              <div class="testi-name"><b>{{ $testi->name }}</b> — {{ $testi->designation }}</div>
+    
+    <div style="position: relative;">
+      <div class="swiper testi-swiper">
+        <div class="swiper-wrapper">
+          @foreach($testimonials as $testi)
+          <div class="swiper-slide" style="height: auto;">
+            <div class="service-card" style="display:flex; flex-direction:column; gap:16px; height:100%; cursor:default; border: 1px solid var(--sky); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+              
+              <div style="display:flex; align-items:center; gap:14px;">
+                <img src="{{ $testi->avatar ? asset('uploads/testimonials/' . $testi->avatar) : 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&auto=format&fit=crop' }}" alt="{{ $testi->name }}" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
+                <div>
+                  <h4 style="font-size:16px; font-weight:700; color:var(--navy); margin-bottom:4px;">{{ $testi->name }}</h4>
+                  <p style="font-size:13.5px; color:var(--muted);">{{ $testi->designation }}</p>
+                </div>
+              </div>
+
+              <p style="font-size:14px; color:var(--muted); line-height:1.6; flex-grow:1; margin:0;">
+                @php 
+                  $fullText = strip_tags($testi->quote); 
+                  $isLong = strlen($fullText) > 120;
+                @endphp
+                @if($isLong)
+                  <span class="short-text">{{ \Illuminate\Support\Str::limit($fullText, 120) }}</span>
+                  <span class="full-text" style="display:none;">
+                      {{ $fullText }}
+                      <a href="javascript:void(0)" onclick="var p=this.closest('p'); p.querySelector('.full-text').style.display='none'; p.querySelector('.short-text').style.display='inline'; p.querySelector('.see-more-btn').style.display='inline';" style="color:var(--sky); font-weight:600; font-size:13px; margin-left:4px;">See less</a>
+                  </span>
+                  <a href="javascript:void(0)" class="see-more-btn" onclick="var p=this.closest('p'); p.querySelector('.short-text').style.display='none'; p.querySelector('.full-text').style.display='inline'; this.style.display='none';" style="color:var(--sky); font-weight:600; font-size:13px; margin-left:4px;">See more</a>
+                @else
+                  {{ $fullText }}
+                @endif
+              </p>
+
             </div>
           </div>
+          @endforeach
         </div>
-        @endforeach
+        <div class="swiper-pagination"></div>
       </div>
-      <div class="swiper-pagination"></div>
+      
+      <!-- Navigation Buttons -->
+      <div class="swiper-button-prev ac-nav-prev"></div>
+      <div class="swiper-button-next ac-nav-next"></div>
     </div>
+
   </div>
 </section>
 @endif
@@ -348,7 +325,12 @@
 
     const testiSwiper = new Swiper('.testi-swiper', {
       loop: true,
-      autoHeight: true,
+      slidesPerView: 1,
+      spaceBetween: 24,
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
       autoplay: {
         delay: 4000,
         disableOnInteraction: false,
@@ -357,6 +339,10 @@
         el: '.testi-swiper .swiper-pagination',
         clickable: true,
       },
+      navigation: {
+        nextEl: '.ac-nav-next',
+        prevEl: '.ac-nav-prev',
+      }
     });
   });
 </script>
