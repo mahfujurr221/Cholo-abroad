@@ -37,6 +37,11 @@
                     <i class="bx bx-text me-3"></i>
                     <span>Section Titles</span>
                 </a>
+                <a class="nav-link d-flex align-items-center" id="v-pills-legal-pages-tab" data-bs-toggle="pill" href="#v-pills-legal-pages"
+                    role="tab" aria-controls="v-pills-legal-pages" aria-selected="false">
+                    <i class="bx bx-file me-3"></i>
+                    <span>Legal Pages</span>
+                </a>
             </div>
         </x-modern.card>
     </div>
@@ -104,10 +109,17 @@
                             </div>
 
                             <div class="col-md-6">
-                                <x-modern.input label="Footer Text" name="footer_text" :value="$setting->footer_text" icon="bx bx-copyright" placeholder="© 2024 Your Company" />
+                                <x-modern.input label="Footer Copyright Text" name="footer_text" :value="$setting->footer_text" icon="bx bx-copyright" placeholder="© 2024 Your Company" />
                             </div>
                             <div class="col-md-6">
                                 <x-modern.input label="Newsletter Text" name="newslatter_text" :value="$setting->newslatter_text" icon="bx bx-mail-send" placeholder="Stay updated!" />
+                            </div>
+
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold text-dark"><i class="bx bx-text me-1 text-primary"></i> Footer Brand Description</label>
+                                    <textarea class="form-control" name="footer_description" rows="2" placeholder="Short description of your brand for the footer" style="border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc; padding: 0.8rem;">{{ $setting->footer_description }}</textarea>
+                                </div>
                             </div>
 
                             <div class="col-12">
@@ -304,6 +316,32 @@
                             </div>
                             <div class="col-md-12">
                                 <x-modern.input type="textarea" rows="2" label="Contact Subtitle" name="contact_subtitle" :value="$setting->contact_subtitle" icon="bx bx-paragraph" placeholder="e.g. Visit our Dhaka office..." />
+                            </div>
+                        </div>
+
+                        <div class="mt-5 text-center">
+                            <x-modern.actions.button actionType="update" type="submit" />
+                        </div>
+                    </form>
+                </x-modern.card>
+            </div>
+
+            {{-- Legal Pages --}}
+            <div class="tab-pane fade" id="v-pills-legal-pages" role="tabpanel" aria-labelledby="v-pills-legal-pages-tab">
+                <x-modern.card title="Legal Pages" icon="bx bx-file">
+                    <form action="{{ route('settings.update', $setting->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="update_section" value="pages">
+                        
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <label class="form-label fw-bold text-dark"><i class="bx bx-shield me-1 text-primary"></i> Privacy Policy</label>
+                                <textarea name="privacy_policy" class="form-control summernote">{{ $setting->privacy_policy }}</textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <label class="form-label fw-bold text-dark"><i class="bx bx-file-blank me-1 text-primary"></i> Terms of Service</label>
+                                <textarea name="terms_and_conditions" class="form-control summernote">{{ $setting->terms_and_conditions }}</textarea>
                             </div>
                         </div>
 

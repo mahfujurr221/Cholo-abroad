@@ -65,6 +65,16 @@ class HomeController extends Controller
         return view('frontend.pages.apply');
     }
 
+    public function privacy()
+    {
+        return view('frontend.pages.privacy');
+    }
+
+    public function terms()
+    {
+        return view('frontend.pages.terms');
+    }
+
     public function submitApply(Request $request)
     {
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [

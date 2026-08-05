@@ -32,6 +32,7 @@ class SettingController extends Controller
             $setting->phone = $request->phone;
             $setting->email = $request->email;
             $setting->footer_text = $request->footer_text;
+            $setting->footer_description = $request->footer_description;
             $setting->newslatter_text = $request->newslatter_text;
             $setting->headline = $request->headline;
 
@@ -105,6 +106,14 @@ class SettingController extends Controller
             $setting->contact_subtitle = $request->contact_subtitle;
             
             toast('Section titles updated successfully!', 'success');
+        }
+
+        // pages
+        if ($request->update_section == 'pages') {
+            $setting->privacy_policy = $request->privacy_policy;
+            $setting->terms_and_conditions = $request->terms_and_conditions;
+            
+            toast('Legal pages updated successfully!', 'success');
         }
 
         $setting->save();

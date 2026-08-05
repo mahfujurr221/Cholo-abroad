@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('footer_text')->nullable();
+            $table->text('footer_description')->nullable();
             $table->string('newslatter_text')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();

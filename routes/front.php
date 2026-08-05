@@ -14,6 +14,8 @@ Route::name('frontend.')->group(function () {
             Route::get('/faq', 'faq')->name('faq');
             Route::get('/contact', 'contact')->name('contact');
             Route::get('/apply', 'apply')->name('apply');
+            Route::get('/privacy-policy', 'privacy')->name('privacy');
+            Route::get('/terms-of-service', 'terms')->name('terms');
         });
 
         // POST routes — never cached
