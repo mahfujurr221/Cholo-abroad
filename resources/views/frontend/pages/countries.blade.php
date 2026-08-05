@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="page-hero">
-  <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">Country</span></div>
-  <div class="eyebrow-label">{{ $countries->count() }} destinations, one process</div>
+  {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">Country</span></div> --}}
+
   <h1>Where do you want to <span style="color:var(--sky)">land</span>?</h1>
   <p>Every country has its own visa track, intake season, and cost of living. Explore the destination that fits your goal.</p>
 </div>

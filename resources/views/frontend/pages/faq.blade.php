@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="page-hero">
-  <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">FAQs</span></div>
-  <div class="eyebrow-label">Got questions?</div>
+  {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">FAQs</span></div> --}}
+
   <h1>Frequently Asked <span style="color:var(--sky)">Questions</span></h1>
   <p>Everything you need to know about our services, visa processes, and what to expect when you apply with us.</p>
 </div>

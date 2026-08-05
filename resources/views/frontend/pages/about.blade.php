@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="page-hero">
-  <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">About</span></div>
-  <div class="eyebrow-label">Who we are</div>
+  {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">About</span></div> --}}
+
   <h1>We've filed the paperwork <span style="color:var(--sky)">so you don't have to</span></h1>
   <p>{{ $about->mission ?? 'Cholo Abroad started with one frustration: visa consulting in Bangladesh was slow, opaque, and split across too many hands. We built the counsellor-owns-the-file model to fix that.' }}</p>
 </div>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div>
-      <div class="eyebrow-label">Our story</div>
+
       <h2>{{ $about->title ?? 'Founded by people who went through it themselves' }}</h2>
       
       @if(isset($about) && $about->description)
@@ -58,7 +58,7 @@
 <section class="sec tight">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="eyebrow-label">What drives us</div>
+
       <h2>Mission & Vision</h2>
     </div>
     <div class="mission-vision-grid">
@@ -85,7 +85,7 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="eyebrow-label">What we stand for</div>
+
       <h2>Three things we don't compromise on</h2>
     </div>
     <div class="value-grid">

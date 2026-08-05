@@ -38,20 +38,18 @@
     <div class="swiper-slide">
       <section class="hero">
         <div>
-          <div class="hero-eyebrow"><span class="dot"></span> {{ $hero->subtitle }}</div>
           <h1>{!! nl2br(e($hero->title)) !!}</h1>
           <p class="sub">{!! $hero->description !!}</p>
           <div class="hero-ctas">
             <a href="{{ $hero->button_link ?? route('frontend.apply') }}" class="btn-primary">{{ $hero->button_text ?? 'Start free assessment' }}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
-            <a href="{{ route('frontend.about') }}" class="btn-ghost">See success stories</a>
           </div>
-          <div class="hero-stats">
+          {{-- <div class="hero-stats">
             <div class="stat"><b>96%</b><span>Visa approval rate</span></div>
             <div class="stat"><b>{{ $countries->count() }}+</b><span>Destination countries</span></div>
             <div class="stat"><b>12k+</b><span>Applications filed</span></div>
-          </div>
+          </div> --}}
         </div>
 
         <div class="hero-visual">
@@ -81,7 +79,7 @@
 @endif
 
 <!-- STRIP -->
-<div class="strip">
+{{-- <div class="strip">
   <div class="strip-inner">
     <span>Visa-approved destinations</span>
     <div class="flags-row">
@@ -101,13 +99,13 @@
       @endforeach
     </div>
   </div>
-</div>
+</div> --}}
 
 <!-- COUNTRIES -->
 <section class="sec" id="countries">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow-label">Where to</div>
+
       <h2>Pick a country, we'll lock it in</h2>
       <p>Every destination comes with its own visa category, intake calendar, and success rate — we match you to the one that fits your profile.</p>
     </div>
@@ -145,7 +143,7 @@
 <section class="sec services-sec" id="services">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow-label">What we handle</div>
+
       <h2>One consultant, every step of the file</h2>
       <p>No juggling agents — one dedicated counsellor owns your case from shortlisting to landing.</p>
     </div>
@@ -174,7 +172,7 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow-label">The route</div>
+
       <h2>From first call to boarding pass</h2>
       <p>A fixed four-step process — you always know what stage your file is at.</p>
     </div>
@@ -203,7 +201,7 @@
         </div>
       </div>
       <div>
-        <div class="eyebrow-label">Who we are</div>
+
         <h2>{{ $about->title }}</h2>
         @if($about->description)
           <p>{{ Str::limit(strip_tags($about->description), 280) }}</p>
@@ -241,7 +239,7 @@
 <section class="sec testi-sec">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="eyebrow-label">Success stories</div>
+
       <h2>Students who trusted us with their future</h2>
     </div>
     <div class="swiper testi-swiper">
@@ -272,7 +270,7 @@
 <section class="sec tight" style="background:#fff;">
   <div class="wrap">
     <div class="sec-head center">
-      <div class="eyebrow-label">Got questions?</div>
+
       <h2>Frequently Asked Questions</h2>
     </div>
     <div style="max-width:780px; margin:0 auto;">

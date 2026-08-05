@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="page-hero">
-  <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">Apply now</span></div>
-  <div class="eyebrow-label">Free assessment</div>
+  {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">Apply now</span></div> --}}
+
   <h1>Let's lock in your <span style="color:var(--sky)">country</span></h1>
   <p>Three short steps. A counsellor reviews your form and calls you within one business day.</p>
 </div>
@@ -27,7 +27,7 @@
         @csrf
         <!-- STEP 1 -->
         <div class="form-step step0">
-          <div class="eyebrow-label">Step 1 of 3</div>
+
           <h2 style="font-size:22px; color:var(--navy); margin:10px 0 24px;">Tell us about you</h2>
           <div class="form-row">
             <div class="form-field"><label>Full name</label><input type="text" name="name" placeholder="Your full name as on passport" required></div>
@@ -47,7 +47,7 @@
 
         <!-- STEP 2 -->
         <div class="form-step step1">
-          <div class="eyebrow-label">Step 2 of 3</div>
+
           <h2 style="font-size:22px; color:var(--navy); margin:10px 0 24px;">Your goal</h2>
           <div class="form-row">
             <div class="form-field"><label>Preferred country</label>
@@ -100,7 +100,7 @@
 
         <!-- STEP 3 -->
         <div class="form-step step2">
-          <div class="eyebrow-label">Step 3 of 3</div>
+
           <h2 style="font-size:22px; color:var(--navy); margin:10px 0 24px;">Anything else we should know?</h2>
           <div class="form-row">
             <div class="form-field full"><label>Notes for your counsellor (optional)</label>
