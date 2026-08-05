@@ -15,116 +15,64 @@
   <div class="wrap">
     <div class="form-shell">
 
-      <div class="form-steps">
-        <div class="fs-dot active">1</div>
-        <div class="fs-line"></div>
-        <div class="fs-dot">2</div>
-        <div class="fs-line"></div>
-        <div class="fs-dot">3</div>
-      </div>
-
       <form id="applyForm">
         @csrf
-        <!-- STEP 1 -->
-        <div class="form-step step0">
-
-          <h2 style="font-size:22px; color:var(--navy); margin:10px 0 24px;">Tell us about you</h2>
+        <div class="form-step active" style="display: block;">
+          <h2 style="font-size:22px; color:var(--navy); margin:10px 0 24px;">Send us an inquiry</h2>
+          
           <div class="form-row">
-            <div class="form-field"><label>Full name</label><input type="text" name="name" placeholder="Your full name as on passport" required></div>
-            <div class="form-field"><label>Date of birth</label><input type="date" name="dob" required></div>
+            <div class="form-field"><label>FULL NAME <span class="text-danger">*</span></label><input type="text" name="name" placeholder="Full Name" required></div>
+            <div class="form-field"><label>EMAIL <span class="text-danger">*</span></label><input type="email" name="email" placeholder="Email Address" required></div>
           </div>
+          
           <div class="form-row">
-            <div class="form-field"><label>Phone number</label><input type="tel" name="phone" placeholder="+880 1XXX-XXXXXX" required></div>
-            <div class="form-field"><label>Email address</label><input type="email" name="email" placeholder="you@email.com" required></div>
-          </div>
-          <div class="form-row">
-            <div class="form-field full"><label>Current city</label><input type="text" name="city" placeholder="e.g. Bogra, Rajshahi Division" required></div>
-          </div>
-          <div class="form-submit-row"><button type="button" class="btn-primary next-step" style="margin-left:auto;">Continue
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button></div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="form-step step1">
-
-          <h2 style="font-size:22px; color:var(--navy); margin:10px 0 24px;">Your goal</h2>
-          <div class="form-row">
-            <div class="form-field"><label>Preferred country</label>
-              <select name="preferred_country" required>
-                <option value="">Select a country</option>
-                @php $applyCountries = \Illuminate\Support\Facades\Cache::rememberForever('frontend_apply_countries', fn() => \App\Models\Country::where('active_status', 1)->get()); @endphp
-                @foreach($applyCountries as $c)
-                <option value="{{ $c->name }}">{{ $c->flag_icon }} {{ $c->name }}</option>
-                @endforeach
-                <option value="Not sure yet">🤔 Not sure yet</option>
-              </select>
-            </div>
-            <div class="form-field"><label>Visa type</label>
-              <select name="visa_type" required>
-                <option value="">Select visa type</option>
-                <option value="Study visa">Study visa</option>
-                <option value="Work visa">Work visa</option>
-                <option value="Settlement / PR">Settlement / PR</option>
-                <option value="Tourist / visit">Tourist / visit</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-field"><label>Highest education</label>
+            <div class="form-field"><label>PHONE/MOBILE <span class="text-danger">*</span></label><input type="tel" name="phone" placeholder="Mobile Number" required></div>
+            <div class="form-field"><label>CURRENT EDUCATION LEVEL <span class="text-danger">*</span></label>
               <select name="highest_education" required>
-                <option value="">Select level</option>
+                <option value="">- SELECT -</option>
                 <option value="SSC / O-Level">SSC / O-Level</option>
                 <option value="HSC / A-Level">HSC / A-Level</option>
                 <option value="Bachelor's">Bachelor's</option>
                 <option value="Master's">Master's</option>
               </select>
             </div>
-            <div class="form-field"><label>Target intake</label>
-              <select name="target_intake" required>
-                <option value="">Select intake</option>
-                <option value="Feb 2027">Feb 2027</option>
-                <option value="Sep 2027">Sep 2027</option>
-                <option value="Jan 2028">Jan 2028</option>
-                <option value="Flexible">Flexible</option>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-field"><label>PREFERRED COUNTRY <span class="text-danger">*</span></label>
+              <select name="preferred_country" required>
+                <option value="">- SELECT -</option>
+                @php $applyCountries = \Illuminate\Support\Facades\Cache::rememberForever('frontend_apply_countries', fn() => \App\Models\Country::where('active_status', 1)->get()); @endphp
+                @foreach($applyCountries as $c)
+                <option value="{{ $c->name }}">{{ $c->name }}</option>
+                @endforeach
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-field"><label>ENGLISH PROFICIENCY TEST <span class="text-danger">*</span></label>
+              <select name="english_proficiency" required>
+                <option value="">- SELECT -</option>
+                <option value="IELTS">IELTS</option>
+                <option value="TOEFL">TOEFL</option>
+                <option value="PTE">PTE</option>
+                <option value="Duolingo">Duolingo</option>
+                <option value="MOI">MOI</option>
+                <option value="None">None</option>
               </select>
             </div>
           </div>
-          <div class="form-submit-row">
-            <button type="button" class="btn-ghost prev-step">Back</button>
-            <button type="button" class="btn-primary next-step">Continue
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- STEP 3 -->
-        <div class="form-step step2">
-
-          <h2 style="font-size:22px; color:var(--navy); margin:10px 0 24px;">Anything else we should know?</h2>
+          
           <div class="form-row">
-            <div class="form-field full"><label>Notes for your counsellor (optional)</label>
-              <textarea name="notes" placeholder="IELTS/TOEFL score, budget range, prior visa refusals — anything that helps us prep."></textarea>
+            <div class="form-field full"><label>YOUR MESSAGE</label>
+              <textarea name="notes" placeholder="Your Message" rows="4"></textarea>
             </div>
           </div>
-          <div class="checkbox-row">
-            <input type="checkbox" required>
-            <span>I agree to be contacted by Cholo Abroad by phone, SMS, or email regarding my application, and I accept the Privacy Policy.</span>
-          </div>
-          <div class="form-submit-row">
-            <button type="button" class="btn-ghost prev-step">Back</button>
-            <button type="submit" class="btn-primary">Submit application
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </button>
+
+          <div class="form-submit-row" style="justify-content: flex-start; margin-top: 15px;">
+            <button type="submit" class="btn-primary" style="border-radius: 8px; width: 100%; text-align: center; justify-content: center; padding: 15px;">Submit Form &rarr;</button>
           </div>
         </div>
       </form>
-
-      <div class="form-success">
-        <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
-        <h3>Application received</h3>
-        <p>A counsellor will review your form and call you within one business day. Keep an eye on your phone and inbox.</p>
-      </div>
 
     </div>
 
@@ -139,7 +87,7 @@
 
 @endsection
 
-@push('scripts')
+@push('js')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const applyForm = document.getElementById('applyForm');
@@ -164,18 +112,47 @@
                 })
                 .then(response => response.json())
                 .then(data => {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
                     if (data.status === 'success') {
-                        applyForm.style.display = 'none';
-                        document.querySelector('.form-success').style.display = 'block';
+                        applyForm.reset();
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Application Received!',
+                            text: 'We will contact you shortly.'
+                        });
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
                     } else {
-                        alert(data.message || 'Something went wrong. Please try again.');
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: data.message || 'Something went wrong.'
+                        });
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('An error occurred. Please try again later.');
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 4000,
+                        icon: 'error',
+                        title: 'An error occurred. Please try again.'
+                    });
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                 });

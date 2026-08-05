@@ -25,8 +25,8 @@ class ContactController extends Controller
     public function show($id)
     {
         $contact = Contact::findOrFail($id);
-        if ($contact->status == 0) {
-            $contact->update(['status' => 1]); // Mark as read
+        if (!$contact->is_read) {
+            $contact->update(['is_read' => true]);
         }
         return view('backend.pages.contacts.show', compact('contact'));
     }

@@ -24,6 +24,9 @@ class ApplicationController extends Controller
     public function show($id)
     {
         $application = Application::findOrFail($id);
+        if (!$application->is_read) {
+            $application->update(['is_read' => true]);
+        }
         return view('backend.pages.applications.show', compact('application'));
     }
 

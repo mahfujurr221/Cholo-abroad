@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email', 255);
             $table->string('topic', 255)->nullable();
             $table->text('message');
-            $table->tinyInteger('status')->default(0)->comment('0 = unread, 1 = read');
+            $table->boolean('is_read')->default(false);
             $table->timestamps();
         });
     }

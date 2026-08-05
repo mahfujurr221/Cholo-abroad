@@ -69,14 +69,11 @@ class HomeController extends Controller
     {
         $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'name' => 'required|string|max:100',
-            'dob' => 'required|date',
             'phone' => 'required|string|max:30',
             'email' => 'required|email|max:100',
-            'city' => 'required|string|max:100',
             'preferred_country' => 'required|string|max:50',
-            'visa_type' => 'required|string|max:50',
             'highest_education' => 'required|string|max:50',
-            'target_intake' => 'required|string|max:50',
+            'english_proficiency' => 'required|string|max:100',
             'notes' => 'nullable|string',
         ]);
 

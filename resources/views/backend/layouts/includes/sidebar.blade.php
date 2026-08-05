@@ -242,7 +242,11 @@
                     <a href="{{ route('applications.index') }}"
                         class="{{ Route::is('applications.*') ? 'active' : '' }}">
                         <i data-feather="file-text"></i>
-                        <span>Applications</span>
+                        <span data-key="t-applications">Applications</span>
+                        @php $unreadApps = \App\Models\Application::where('is_read', false)->count(); @endphp
+                        @if($unreadApps > 0)
+                            <span class="badge rounded-pill bg-danger float-end">{{ $unreadApps }}</span>
+                        @endif
                     </a>
                 </li>
                 @endcan
@@ -252,7 +256,11 @@
                     <a href="{{ route('contacts.index') }}"
                         class="{{ Route::is('contacts.*') ? 'active' : '' }}">
                         <i data-feather="mail"></i>
-                        <span>Contact Messages</span>
+                        <span data-key="t-contacts">Contact Messages</span>
+                        @php $unreadContacts = \App\Models\Contact::where('is_read', false)->count(); @endphp
+                        @if($unreadContacts > 0)
+                            <span class="badge rounded-pill bg-danger float-end">{{ $unreadContacts }}</span>
+                        @endif
                     </a>
                 </li>
                 @endcan

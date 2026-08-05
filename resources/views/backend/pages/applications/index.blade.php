@@ -6,7 +6,7 @@
 
 <x-modern.card title="Applications" icon="bx bx-file">
 
-    <x-modern.table :headers="['#', 'Applicant Info', 'Country & Visa', 'Intake', 'Status', 'Date', 'Actions']">
+    <x-modern.table :headers="['#', 'Applicant Info', 'Country & Education', 'English', 'Status', 'Date', 'Actions']">
         @forelse($applications as $application)
         <tr>
             <td class="align-middle">{{ $loop->iteration }}</td>
@@ -20,11 +20,11 @@
             <td class="align-middle">
                 <div class="d-flex flex-column">
                     <span class="text-dark fw-medium">{{ $application->preferred_country }}</span>
-                    <span class="text-muted small">{{ $application->visa_type }}</span>
+                    <span class="text-muted small">{{ $application->highest_education }}</span>
                 </div>
             </td>
             <td class="align-middle text-muted">
-                {{ $application->target_intake }}
+                {{ $application->english_proficiency }}
             </td>
             <td class="align-middle">
                 @php

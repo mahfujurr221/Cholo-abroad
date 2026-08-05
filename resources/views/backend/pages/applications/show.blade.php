@@ -13,10 +13,6 @@
                     <td>{{ $application->name }}</td>
                 </tr>
                 <tr>
-                    <th>Date of Birth</th>
-                    <td>{{ \Carbon\Carbon::parse($application->dob)->format('d M, Y') }}</td>
-                </tr>
-                <tr>
                     <th>Email Address</th>
                     <td>{{ $application->email }}</td>
                 </tr>
@@ -25,29 +21,22 @@
                     <td>{{ $application->phone }}</td>
                 </tr>
                 <tr>
-                    <th>Current City</th>
-                    <td>{{ $application->city }}</td>
-                </tr>
-                <tr>
                     <th>Preferred Country</th>
                     <td>{{ $application->preferred_country }}</td>
-                </tr>
-                <tr>
-                    <th>Visa Type</th>
-                    <td>{{ $application->visa_type }}</td>
                 </tr>
                 <tr>
                     <th>Highest Education</th>
                     <td>{{ $application->highest_education }}</td>
                 </tr>
                 <tr>
-                    <th>Target Intake</th>
-                    <td>{{ $application->target_intake }}</td>
+                    <th>English Proficiency Test</th>
+                    <td>{{ $application->english_proficiency }}</td>
                 </tr>
                 <tr>
-                    <th>Notes</th>
+                    <th>Message / Notes</th>
                     <td>{{ $application->notes ?? 'N/A' }}</td>
                 </tr>
+
                 <tr>
                     <th>Date Applied</th>
                     <td>{{ $application->created_at->format('d M, Y h:i A') }}</td>

@@ -79,13 +79,7 @@
           </button>
         </form>
 
-        <div class="form-success" style="display:none; margin-top:20px; padding:20px; background:#e8f5e9; border:1px solid #c8e6c9; border-radius:12px;">
-          <div class="tick" style="width:40px;height:40px;background:#4caf50;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:12px;">
-            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-          </div>
-          <h3 style="margin-bottom:8px;color:#2e7d32;">Message sent successfully!</h3>
-          <p style="color:#1b5e20;">Thank you for reaching out. We will get back to you shortly.</p>
-        </div>
+
       </div>
     </div>
   </div>
@@ -93,7 +87,7 @@
 
 @endsection
 
-@push('scripts')
+@push('js')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const contactForm = document.getElementById('contactForm');
@@ -123,18 +117,47 @@
                 })
                 .then(response => response.json())
                 .then(data => {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 5000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
+
                     if (data.status === 'success') {
-                        contactForm.style.display = 'none';
-                        document.querySelector('.form-success').style.display = 'block';
+                        contactForm.reset();
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Message Sent!',
+                            text: 'We will get back to you shortly.'
+                        });
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
                     } else {
-                        alert(data.message || 'Something went wrong. Please try again.');
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: data.message || 'Something went wrong.'
+                        });
                         submitBtn.innerHTML = originalText;
                         submitBtn.disabled = false;
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('An error occurred. Please try again later.');
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 4000,
+                        icon: 'error',
+                        title: 'An error occurred. Please try again.'
+                    });
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                 });

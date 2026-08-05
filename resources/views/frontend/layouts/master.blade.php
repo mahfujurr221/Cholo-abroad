@@ -28,8 +28,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Hind+Siliguri:wght@500;600;700&display=swap">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Hind+Siliguri:wght@500;600;700&display=swap"></noscript>
 
-<!-- Main CSS -->
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}?v={{ time() }}">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @stack('css')
 
 </head>

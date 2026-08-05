@@ -21,7 +21,7 @@
                 <span class="text-dark fw-medium">{{ $contact->topic ?? 'N/A' }}</span>
             </td>
             <td class="align-middle">
-                @if($contact->status == 0)
+                @if(!$contact->is_read)
                     <span class="badge bg-warning-subtle text-warning border border-warning-subtle px-3 py-1" style="border-radius: 20px;">
                         <i class="bx bxs-circle font-size-8 me-1"></i>Unread
                     </span>

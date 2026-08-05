@@ -13,15 +13,13 @@ class Application extends Model
 
     protected $fillable = [
         'name',
-        'dob',
         'phone',
         'email',
-        'city',
         'preferred_country',
-        'visa_type',
         'highest_education',
-        'target_intake',
+        'english_proficiency',
         'notes',
+        'is_read',
         'status',
     ];
 }

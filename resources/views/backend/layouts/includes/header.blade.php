@@ -58,18 +58,73 @@
                 </div>
             </div>
 
-            <div class="dropdown d-none d-sm-inline-block">
+            {{-- <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item" id="mode-setting-btn">
                     <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
                     <i data-feather="sun" class="icon-lg layout-mode-light"></i>
                 </button>
+            </div> --}}
+
+            @php
+                $unreadApplications = \App\Models\Application::where('is_read', false)->count();
+                $unreadContacts = \App\Models\Contact::where('is_read', false)->count();
+                $totalUnread = $unreadApplications + $unreadContacts;
+            @endphp
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i data-feather="bell" class="icon-lg"></i>
+                    @if($totalUnread > 0)
+                    <span class="badge bg-danger rounded-pill">{{ $totalUnread }}</span>
+                    @endif
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
+                    <div class="p-3">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="m-0"> Notifications </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-simplebar style="max-height: 230px;">
+                        <a href="{{ route('applications.index') }}" class="text-reset notification-item">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 avatar-sm me-3">
+                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                        <i class="bx bx-file"></i>
+                                    </span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">New Applications</h6>
+                                    <div class="font-size-13 text-muted">
+                                        <p class="mb-1">You have {{ $unreadApplications }} unread application(s).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="{{ route('contacts.index') }}" class="text-reset notification-item">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 avatar-sm me-3">
+                                    <span class="avatar-title bg-success rounded-circle font-size-16">
+                                        <i class="bx bx-message-square-dots"></i>
+                                    </span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">New Messages</h6>
+                                    <div class="font-size-13 text-muted">
+                                        <p class="mb-1">You have {{ $unreadContacts }} unread message(s).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="dropdown d-inline-block">
+            {{-- <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item right-bar-toggle me-2">
                     <i data-feather="settings" class="icon-lg"></i>
                 </button>
-            </div>
+            </div> --}}
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item bg-light-subtle border-start border-end"
