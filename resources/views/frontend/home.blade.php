@@ -3,7 +3,8 @@
 @section('title', 'Home - ' . (setting()->site_name ?? 'Cholo Abroad'))
 
 @push('css')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<link rel="stylesheet" media="print" onload="this.media='all'; this.onload=null" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /></noscript>
 
 @endpush
 

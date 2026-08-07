@@ -2522,7 +2522,9 @@ footer {
   }
 
   .logo img {
-    height: 36px;
+    height: 48px;
+    max-width: 65vw;
+    object-fit: contain;
   }
 
   .apply-btn {
