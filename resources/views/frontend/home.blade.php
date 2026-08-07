@@ -179,6 +179,17 @@
     </div>
     
     <style>
+      @keyframes jumpWave {
+          0%, 100% {
+              transform: translateY(0);
+          }
+          10% {
+              transform: translateY(-15px);
+          }
+          20% {
+              transform: translateY(0);
+          }
+      }
       .new-steps-container {
           display: flex;
           align-items: stretch;
@@ -208,6 +219,12 @@
           display: flex;
           flex-direction: column;
           z-index: 1;
+          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+          animation: jumpWave 4s infinite ease-in-out;
+      }
+      .new-step-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.12);
       }
       .new-step-card::before {
           content: '';
@@ -234,6 +251,10 @@
           color: #fff;
           font-size: 24px;
           box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .new-step-card:hover .new-step-icon {
+          transform: scale(1.15) rotate(5deg);
       }
       .new-step-number {
           position: absolute;
@@ -311,7 +332,7 @@
     <div class="new-steps-container">
       @foreach($processes as $index => $process)
       <div class="new-step-wrapper">
-          <div class="new-step-card" style="--step-color: {{ $process->color ?: 'var(--sky)' }};">
+          <div class="new-step-card" style="--step-color: {{ $process->color ?: 'var(--sky)' }}; animation-delay: {{ $index * 0.15 }}s;">
              <div class="new-step-icon" style="{{ $process->color ? 'background: '.$process->color.'; box-shadow: 0 6px 12px '.$process->color.'66;' : 'background: var(--sky); box-shadow: 0 6px 12px rgba(0,0,0,0.1);' }}">
                  <i class="{{ $process->icon ?: 'bx bx-star' }}"></i>
              </div>
