@@ -1437,7 +1437,8 @@ footer {
 }
 
 .foot-logo img {
-  height: 30px;
+  height: auto;
+  max-height: 60px;
   filter: brightness(0) invert(1);
 }
 
