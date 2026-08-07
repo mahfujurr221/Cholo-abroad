@@ -17,7 +17,7 @@
       <div class="corner tl" style="border-color:var(--sky);"></div>
       <div class="corner br" style="border-color:var(--gold);"></div>
       <div class="frame">
-          <img src="{{ isset($about) && $about->image1 ? asset('uploads/' . $about->image1) : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&auto=format&fit=crop' }}" alt="Consulting team at work">
+          <img src="{{ isset($about) && $about->image1 ? asset('uploads/about_us/' . $about->image1) : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&auto=format&fit=crop' }}" alt="Consulting team at work">
       </div>
     </div>
     <div>
