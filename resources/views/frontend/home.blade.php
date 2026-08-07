@@ -282,6 +282,7 @@
 </section>
 @endif
 
+{{-- 
 <!-- FAQ PREVIEW -->
 @if($faqs->count() > 0)
 <section class="sec tight" style="background:#fff;">
@@ -312,6 +313,7 @@
   </div>
 </section>
 @endif
+--}}
 
 <!-- CTA -->
 @if($cta)

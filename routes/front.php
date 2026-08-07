@@ -12,7 +12,7 @@ Route::name('frontend.')->group(function () {
             Route::get('/services', 'services')->name('services');
             Route::get('/countries', 'countries')->name('countries');
             Route::get('/countries/{slug}', 'countryDetail')->name('country.detail');
-            Route::get('/faq', 'faq')->name('faq');
+            // Route::get('/faq', 'faq')->name('faq');
             Route::get('/contact', 'contact')->name('contact');
             Route::get('/apply', 'apply')->name('apply');
             Route::get('/privacy-policy', 'privacy')->name('privacy');
