@@ -4,7 +4,7 @@
     <div class="foot-col brand">
       <a href="{{ route('frontend.home') }}" class="foot-logo">
          @if(setting()->logo)
-             <img src="{{ asset('uploads/' . setting()->logo) }}" alt="Logo" style="max-height: 48px;">
+             <img src="{{ asset('uploads/' . setting()->logo) }}" alt="Logo" style="max-height: 72px;">
          @else
              <h2 style="color: #fff; margin: 0; font-size: 24px;">{{ setting()->site_name ?? 'Cholo Abroad' }}</h2>
          @endif
