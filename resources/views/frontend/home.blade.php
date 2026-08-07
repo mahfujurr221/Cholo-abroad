@@ -209,15 +209,125 @@
       <h2 style="font-size:38px; color:#1C2646; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">{!! setting()->partners_title ?? "Australian Institutions" !!}</h2>
       <p style="color:#5D6D86; font-size:15px; max-width:680px; margin:0 auto; line-height:1.6;">{!! setting()->partners_subtitle ?? "We help international students explore Australian programs, get expert help, and apply with confidence. With Real Support From Start to Finish" !!}</p>
     </div>
-    
-    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:40px; margin-top:40px; opacity:0.8;">
-      @foreach($partners as $partner)
-        @if($partner->logo)
-          <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}" style="max-height:50px; max-width:180px; object-fit:contain; filter:grayscale(100%); transition:all 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.opacity='1'" onmouseout="this.style.filter='grayscale(100%)'; this.style.opacity='0.8'">
-        @else
-          <span style="font-weight:600; color:#5D6D86; font-size:16px;">{{ $partner->name }}</span>
-        @endif
-      @endforeach
+    <style>
+      .marquee-container {
+          overflow: hidden;
+          width: 100%;
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 60px; /* Increased gap between rows */
+      }
+      .marquee-track {
+          display: flex;
+          width: max-content;
+          animation: marquee 80s linear infinite; /* Increased from 40s to 80s to reduce speed */
+      }
+      .marquee-track.reverse {
+          animation-direction: reverse;
+      }
+      .marquee-container:hover .marquee-track {
+          animation-play-state: paused;
+      }
+      .marquee-set {
+          display: flex;
+          align-items: center;
+          padding-right: 40px;
+          gap: 40px;
+      }
+      @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+      }
+      .marquee-item img {
+          max-height: 50px;
+          max-width: 180px;
+          object-fit: contain;
+          filter: grayscale(100%);
+          opacity: 0.8;
+          transition: all 0.3s ease;
+      }
+      .marquee-item img:hover {
+          filter: grayscale(0%);
+          opacity: 1;
+      }
+      .marquee-item span {
+          font-weight: 600;
+          color: #5D6D86;
+          font-size: 16px;
+      }
+    </style>
+    @php
+        $half = ceil($partners->count() / 2);
+        $partnersRow1 = $partners->take($half);
+        $partnersRow2 = $partners->skip($half);
+    @endphp
+    <div class="marquee-container">
+      <!-- Line 1 -->
+      <div class="marquee-track">
+        <!-- Set 1 -->
+        <div class="marquee-set">
+          @for($i = 0; $i < 4; $i++)
+            @foreach($partnersRow1 as $partner)
+              <div class="marquee-item">
+                @if($partner->logo)
+                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}">
+                @else
+                  <span>{{ $partner->name }}</span>
+                @endif
+              </div>
+            @endforeach
+          @endfor
+        </div>
+        <!-- Set 2 -->
+        <div class="marquee-set">
+          @for($i = 0; $i < 4; $i++)
+            @foreach($partnersRow1 as $partner)
+              <div class="marquee-item">
+                @if($partner->logo)
+                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}">
+                @else
+                  <span>{{ $partner->name }}</span>
+                @endif
+              </div>
+            @endforeach
+          @endfor
+        </div>
+      </div>
+      
+      <!-- Line 2 -->
+      @if($partnersRow2->count() > 0)
+      <div class="marquee-track reverse">
+        <!-- Set 1 -->
+        <div class="marquee-set">
+          @for($i = 0; $i < 4; $i++)
+            @foreach($partnersRow2 as $partner)
+              <div class="marquee-item">
+                @if($partner->logo)
+                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}">
+                @else
+                  <span>{{ $partner->name }}</span>
+                @endif
+              </div>
+            @endforeach
+          @endfor
+        </div>
+        <!-- Set 2 -->
+        <div class="marquee-set">
+          @for($i = 0; $i < 4; $i++)
+            @foreach($partnersRow2 as $partner)
+              <div class="marquee-item">
+                @if($partner->logo)
+                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}">
+                @else
+                  <span>{{ $partner->name }}</span>
+                @endif
+              </div>
+            @endforeach
+          @endfor
+        </div>
+      </div>
+      @endif
     </div>
   </div>
 </section>
