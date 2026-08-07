@@ -174,11 +174,16 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec-head" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-      <h2 style="margin: 0; white-space: nowrap;">{!! setting()->process_title ?? "From first call to boarding pass" !!}</h2>
+      <h2 class="process-title" style="margin: 0;">{!! setting()->process_title ?? "From first call to boarding pass" !!}</h2>
       <p style="margin: 0; text-align: right; max-width: 600px;">{!! setting()->process_subtitle ?? "With PFEC Global by your side, you can make the whole process a breeze!" !!}</p>
     </div>
     
     <style>
+      @media(min-width: 768px) {
+          .process-title {
+              white-space: nowrap;
+          }
+      }
       @keyframes jumpWave {
           0%, 100% {
               transform: translateY(0);
