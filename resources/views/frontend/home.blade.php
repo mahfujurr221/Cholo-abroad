@@ -64,9 +64,9 @@
       <p>{!! setting()->countries_subtitle ?? "Every destination comes with its own visa category, intake calendar, and success rate — we match you to the one that fits your profile." !!}</p>
     </div>
     <div class="countries-grid">
-      @foreach($countries->take(4) as $country)
-      <a class="country-card" href="{{ route('frontend.country.detail', $country->slug) }}">
-        <img src="{{ $country->image ? asset('uploads/countries/' . $country->image) : 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=500&auto=format&fit=crop' }}" alt="{{ $country->name }}">
+      @foreach($countries->take(4) as $index => $country)
+      <a class="country-card" href="{{ route('frontend.country.detail', $country->slug) }}" data-aos="zoom-in" data-aos-delay="{{ $index * 100 }}">
+        <img src="{{ $country->image ? asset('uploads/countries/' . $country->image) : 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=500&auto=format&fit=crop' }}" alt="{{ $country->name }}" loading="lazy">
         @if($country->approval_rate)
           <div class="cc-badge">{{ $country->approval_rate }} approval</div>
         @endif
@@ -82,7 +82,7 @@
             @endif
             {{ $country->name }}
           </b>
-          <span>{!! Str::limit(strip_tags($country->description), 45) !!}</span>
+          <span>{!! Str::limit($country->description, 45) !!}</span>
         </div>
       </a>
       @endforeach
@@ -104,8 +104,8 @@
       <p>{!! setting()->services_subtitle ?? "No juggling agents — one dedicated counsellor owns your case from shortlisting to landing." !!}</p>
     </div>
     <div class="services-grid">
-      @foreach($services->take(4) as $service)
-      <div class="service-card">
+      @foreach($services->take(4) as $index => $service)
+      <div class="service-card" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
         <div class="service-icon">
             @if($service->icon)
                 <i class="{{ $service->icon }}" style="font-size: 24px; color: #fff;"></i>
@@ -127,7 +127,7 @@
 <!-- PROCESS -->
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+    <div class="sec-head" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;" data-aos="fade-up">
       <h2 class="process-title" style="margin: 0;">{!! setting()->process_title ?? "From first call to boarding pass" !!}</h2>
       <p style="margin: 0; text-align: right; max-width: 600px;">{!! setting()->process_subtitle ?? "With PFEC Global by your side, you can make the whole process a breeze!" !!}</p>
     </div>
@@ -387,7 +387,7 @@
             @foreach($partnersRow1 as $partner)
               <div class="marquee-item">
                 @if($partner->logo)
-                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}">
+                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}" loading="lazy">
                 @else
                   <span>{{ $partner->name }}</span>
                 @endif
@@ -401,7 +401,7 @@
             @foreach($partnersRow1 as $partner)
               <div class="marquee-item">
                 @if($partner->logo)
-                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}">
+                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}" loading="lazy">
                 @else
                   <span>{{ $partner->name }}</span>
                 @endif
@@ -420,7 +420,7 @@
             @foreach($partnersRow2 as $partner)
               <div class="marquee-item">
                 @if($partner->logo)
-                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}">
+                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}" loading="lazy">
                 @else
                   <span>{{ $partner->name }}</span>
                 @endif
@@ -434,7 +434,7 @@
             @foreach($partnersRow2 as $partner)
               <div class="marquee-item">
                 @if($partner->logo)
-                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}">
+                  <img src="{{ asset('uploads/partners/' . $partner->logo) }}" alt="{{ $partner->name }}" loading="lazy">
                 @else
                   <span>{{ $partner->name }}</span>
                 @endif
@@ -502,7 +502,7 @@
       .new-testi-info {
           padding-top: 20px; /* Push name down to clear absolute country badge if they collide */
       }
-      .new-testi-info h4 {
+      .new-testi-info h3 {
           font-size: 17px;
           font-weight: 800;
           color: var(--navy);
@@ -538,7 +538,7 @@
       }
       .new-testi-program {
           font-size: 13px;
-          color: var(--sky);
+          color: #1565C0; /* Darker blue for contrast ratio */
           font-weight: 600;
           margin: 0 0 2px 0;
       }
@@ -581,9 +581,9 @@
                     <i class="bx bx-globe"></i> {{ $testi->country_name }}
                 </div>
                 @endif
-                <img src="{{ $testi->avatar ? asset('uploads/testimonials/' . $testi->avatar) : 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&auto=format&fit=crop' }}" alt="{{ $testi->name }}" class="new-testi-avatar">
+                <img src="{{ $testi->avatar ? asset('uploads/testimonials/' . $testi->avatar) : 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&auto=format&fit=crop' }}" alt="{{ $testi->name }}" class="new-testi-avatar" loading="lazy">
                 <div class="new-testi-info" style="{{ !$testi->country_name ? 'padding-top:0;' : '' }}">
-                  <h4>{{ $testi->name }}</h4>
+                  <h3>{{ $testi->name }}</h3>
                   <p>{{ $testi->past_school ?? $testi->designation }}</p>
                 </div>
               </div>
@@ -597,7 +597,7 @@
                 </div>
                 <div>
                     @if($testi->program)<p class="new-testi-program">{{ $testi->program }}</p>@endif
-                    @if($testi->university)<h5 class="new-testi-uni">{{ $testi->university }}</h5>@endif
+                    @if($testi->university)<h4 class="new-testi-uni">{{ $testi->university }}</h4>@endif
                 </div>
               </div>
               <div class="new-testi-divider"></div>
@@ -616,9 +616,9 @@
                       <span class="short-text">{{ \Illuminate\Support\Str::limit($fullText, 180) }}</span>
                       <span class="full-text" style="display:none;">
                           {{ $fullText }}
-                          <a href="javascript:void(0)" onclick="var p=this.closest('.new-testi-text'); p.querySelector('.full-text').style.display='none'; p.querySelector('.short-text').style.display='inline'; p.querySelector('.see-more-btn').style.display='inline';" style="color:var(--sky); font-weight:600; font-size:13px; margin-left:4px;">See less</a>
+                          <span role="button" tabindex="0" onclick="var p=this.closest('.new-testi-text'); p.querySelector('.full-text').style.display='none'; p.querySelector('.short-text').style.display='inline'; p.querySelector('.see-more-btn').style.display='inline';" style="color:#1565C0; font-weight:700; font-size:13px; margin-left:4px; cursor:pointer;">See less</span>
                       </span>
-                      <a href="javascript:void(0)" class="see-more-btn" onclick="var p=this.closest('.new-testi-text'); p.querySelector('.short-text').style.display='none'; p.querySelector('.full-text').style.display='inline'; this.style.display='none';" style="color:var(--sky); font-weight:600; font-size:13px; margin-left:4px;">See more</a>
+                      <span role="button" tabindex="0" class="see-more-btn" onclick="var p=this.closest('.new-testi-text'); p.querySelector('.short-text').style.display='none'; p.querySelector('.full-text').style.display='inline'; this.style.display='none';" style="color:#1565C0; font-weight:700; font-size:13px; margin-left:4px; cursor:pointer;">See more</span>
                     @else
                       {{ $fullText }}
                     @endif

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>@yield('title', 'Cholo Abroad — Study & Visa Consultants')</title>
+<meta name="description" content="{{ setting()->site_description ?? 'Study, work, and settlement visa consultancy helping Bangladeshi students and professionals move abroad with confidence.' }}">
 
 <!-- Favicon -->
 @if(setting() && setting()->favicon)
@@ -62,7 +63,7 @@
 @include('frontend.layouts.includes.footer')
 
 <!-- Extracted JS -->
-<script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/main.js') }}" defer></script>
 @stack('js')
 
 </body>

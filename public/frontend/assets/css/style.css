@@ -3099,7 +3099,12 @@ footer {
 /* Hero and Testimonial Swiper */
 .hero-swiper { width: 100%; overflow: hidden; position: relative; }
 .testi-swiper { width: 100%; overflow: hidden; padding-bottom: 40px; position: relative; }
-.swiper-pagination-bullet-active { background: var(--sky); }
+.swiper-pagination-bullet {
+    width: 14px !important;
+    height: 14px !important;
+    margin: 0 10px !important;
+}
+.swiper-pagination-bullet-active { background: var(--sky) !important; }
 .hero-swiper .swiper-pagination { bottom: 10px; }
 
 /* About preview */

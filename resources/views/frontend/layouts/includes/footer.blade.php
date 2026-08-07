@@ -13,15 +13,15 @@
       
       <!-- Social Media Icons -->
       <div style="display:flex; gap:12px;">
-         <a href="{{ setting()->facebook ?? '#' }}" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#fff;transition:background 0.3s;font-size:18px;" onmouseover="this.style.background='var(--sky)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="bx bxl-facebook"></i></a>
-         <a href="{{ setting()->instagram ?? '#' }}" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#fff;transition:background 0.3s;font-size:18px;" onmouseover="this.style.background='var(--sky)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="bx bxl-instagram"></i></a>
-         <a href="{{ setting()->linkedin ?? '#' }}" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#fff;transition:background 0.3s;font-size:18px;" onmouseover="this.style.background='var(--sky)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="bx bxl-linkedin"></i></a>
-         <a href="{{ setting()->youtube ?? '#' }}" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#fff;transition:background 0.3s;font-size:18px;" onmouseover="this.style.background='var(--sky)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="bx bxl-youtube"></i></a>
+         <a href="{{ setting()->facebook ?? '#' }}" aria-label="Facebook" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#fff;transition:background 0.3s;font-size:18px;" onmouseover="this.style.background='var(--sky)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="bx bxl-facebook"></i></a>
+         <a href="{{ setting()->instagram ?? '#' }}" aria-label="Instagram" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#fff;transition:background 0.3s;font-size:18px;" onmouseover="this.style.background='var(--sky)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="bx bxl-instagram"></i></a>
+         <a href="{{ setting()->linkedin ?? '#' }}" aria-label="LinkedIn" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#fff;transition:background 0.3s;font-size:18px;" onmouseover="this.style.background='var(--sky)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="bx bxl-linkedin"></i></a>
+         <a href="{{ setting()->youtube ?? '#' }}" aria-label="YouTube" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;color:#fff;transition:background 0.3s;font-size:18px;" onmouseover="this.style.background='var(--sky)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="bx bxl-youtube"></i></a>
       </div>
     </div>
     
     <div class="foot-col foot-contact">
-      <h4>Get in touch</h4>
+      <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 24px; color: #fff;">Get in touch</h2>
       <a href="{{ route('frontend.contact') }}" style="display:flex; gap:10px;"><i class="bx bxs-map" style="color:var(--sky); margin-top:4px; font-size:16px;"></i>{{ setting()->address ?? 'Uttara, Dhaka, Bangladesh' }}</a>
       <a href="tel:{{ setting()->phone }}" style="display:flex; gap:10px;"><i class="bx bxs-phone" style="color:var(--sky); margin-top:4px; font-size:16px;"></i>{{ setting()->phone ?? '+880 1XXX-XXXXXX' }}</a>
       <a href="mailto:{{ setting()->email }}" style="display:flex; gap:10px;"><i class="bx bxs-envelope" style="color:var(--sky); margin-top:4px; font-size:16px;"></i>{{ setting()->email ?? 'hello@choloabroad.com' }}</a>

@@ -11,7 +11,7 @@
         <div class="mobile-menu"></div>
         <div class="tpoffcanvas__instagram text-center">
             <div class="tpoffcanvas__instagram-title">
-                <h4>instagram</h4>
+                <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #fff; text-transform: uppercase;">instagram</h2>
             </div>
             <a href="#"><img src="{{ asset('frontend/assets/img/project/project-inner-4.jpg') }}" alt=""></a>
             <a href="#"><img src="{{ asset('frontend/assets/img/project/project-inner-5.jpg') }}" alt=""></a>
@@ -19,7 +19,7 @@
             <a href="#"><img src="{{ asset('frontend/assets/img/project/project-inner-7.jpg') }}" alt=""></a>
         </div>
         <div class="tpoffcanvas__info text-center">
-            <h4 class="offcanva-title">we are here</h4>
+            <h2 class="offcanva-title" style="font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #fff; text-transform: uppercase;">we are here</h2>
             <a href="#" target="_blank">
                 Middle Badda<br>
                 Dhaka-1212, Bangladesh
