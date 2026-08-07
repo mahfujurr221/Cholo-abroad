@@ -27,16 +27,16 @@
                             <x-modern.input type="textarea" class="summernote" label="Description (Bangla)" name="description_bn" placeholder="Enter Description (Bangla)" :value="old('description_bn', $aboutus->description_bn)" rows="3"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Mission" name="mission" placeholder="Enter Mission" :value="old('mission', $aboutus->mission)" rows="3"  />
+                            <x-modern.input type="textarea" label="Mission" name="mission" placeholder="Enter Mission" :value="old('mission', $aboutus->mission)" rows="6"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Mission (Bangla)" name="mission_bn" placeholder="Enter Mission (Bangla)" :value="old('mission_bn', $aboutus->mission_bn)" rows="3"  />
+                            <x-modern.input type="textarea" label="Mission (Bangla)" name="mission_bn" placeholder="Enter Mission (Bangla)" :value="old('mission_bn', $aboutus->mission_bn)" rows="6"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Vision" name="vision" placeholder="Enter Vision" :value="old('vision', $aboutus->vision)" rows="3"  />
+                            <x-modern.input type="textarea" label="Vision" name="vision" placeholder="Enter Vision" :value="old('vision', $aboutus->vision)" rows="6"  />
                         </div>
                         <div class="col-md-12">
-                            <x-modern.input type="textarea" label="Vision (Bangla)" name="vision_bn" placeholder="Enter Vision (Bangla)" :value="old('vision_bn', $aboutus->vision_bn)" rows="3"  />
+                            <x-modern.input type="textarea" label="Vision (Bangla)" name="vision_bn" placeholder="Enter Vision (Bangla)" :value="old('vision_bn', $aboutus->vision_bn)" rows="6"  />
                         </div>
                         
                         <!-- Value 1 -->
@@ -61,6 +61,32 @@
                         </div>
                         <div class="col-md-12">
                             <x-modern.input type="textarea" class="summernote" label="Value 3 Description" name="value_3_desc" placeholder="Enter Value 3 Description" :value="old('value_3_desc', $aboutus->value_3_desc)" rows="2" />
+                        </div>
+                        
+                        <!-- Stats Band -->
+                        <div class="col-md-6">
+                            <x-modern.input label="Stat 1 Value (e.g. 2019)" name="stat_1_value" placeholder="Enter Stat 1 Value" :value="old('stat_1_value', $aboutus->stat_1_value)" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Stat 1 Label (e.g. Founded in Dhaka)" name="stat_1_label" placeholder="Enter Stat 1 Label" :value="old('stat_1_label', $aboutus->stat_1_label)" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Stat 2 Value" name="stat_2_value" placeholder="Enter Stat 2 Value" :value="old('stat_2_value', $aboutus->stat_2_value)" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Stat 2 Label" name="stat_2_label" placeholder="Enter Stat 2 Label" :value="old('stat_2_label', $aboutus->stat_2_label)" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Stat 3 Value" name="stat_3_value" placeholder="Enter Stat 3 Value" :value="old('stat_3_value', $aboutus->stat_3_value)" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Stat 3 Label" name="stat_3_label" placeholder="Enter Stat 3 Label" :value="old('stat_3_label', $aboutus->stat_3_label)" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Stat 4 Value" name="stat_4_value" placeholder="Enter Stat 4 Value" :value="old('stat_4_value', $aboutus->stat_4_value)" />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Stat 4 Label" name="stat_4_label" placeholder="Enter Stat 4 Label" :value="old('stat_4_label', $aboutus->stat_4_label)" />
                         </div>
                         <div class="col-md-12">
                             <x-modern.input type="file" label="Image 1 (Leave blank to keep current)" name="image1" />

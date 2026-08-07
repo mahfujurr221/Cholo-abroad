@@ -45,10 +45,10 @@
 <section class="sec tight">
   <div class="wrap">
     <div class="stats-band">
-      <div class="stat"><b>2019</b><span>Founded in Dhaka</span></div>
-      <div class="stat"><b>12k+</b><span>Applications filed</span></div>
-      <div class="stat"><b>96%</b><span>Peak approval rate</span></div>
-      <div class="stat"><b>8</b><span>Countries covered</span></div>
+      <div class="stat"><b>{{ $about->stat_1_value ?? '2019' }}</b><span>{{ $about->stat_1_label ?? 'Founded in Dhaka' }}</span></div>
+      <div class="stat"><b>{{ $about->stat_2_value ?? '12k+' }}</b><span>{{ $about->stat_2_label ?? 'Applications filed' }}</span></div>
+      <div class="stat"><b>{{ $about->stat_3_value ?? '96%' }}</b><span>{{ $about->stat_3_label ?? 'Peak approval rate' }}</span></div>
+      <div class="stat"><b>{{ $about->stat_4_value ?? '8' }}</b><span>{{ $about->stat_4_label ?? 'Countries covered' }}</span></div>
     </div>
   </div>
 </section>
