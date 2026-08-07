@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Hind Siliguri', sans-serif;
   background: var(--bg);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
@@ -36,7 +36,7 @@ h1,
 h2,
 h3,
 .display {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
 }
 
 .bn {
@@ -585,7 +585,7 @@ nav {
 }
 
 .cc-info b {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
   font-size: 18px;
   display: block;
 }
@@ -919,7 +919,7 @@ nav {
 
 .stats-band .stat b {
   display: block;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
   font-size: 34px;
   color: #fff;
 }
@@ -961,7 +961,7 @@ nav {
 .team-card .info b {
   display: block;
   color: var(--navy);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
   font-size: 15.5px;
 }
 
@@ -982,7 +982,7 @@ nav {
 }
 
 .value-num {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
   font-size: 32px;
   font-weight: 800;
   color: var(--gold);
@@ -1246,7 +1246,7 @@ nav {
 }
 
 .quote-mark {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
   font-size: 60px;
   color: var(--sky-light);
   line-height: 0.5;
@@ -1560,7 +1560,7 @@ footer {
 
 .stat b {
   font-size: 26px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
   color: var(--navy);
   display: block;
 }
@@ -1636,7 +1636,7 @@ footer {
   display: block;
   color: var(--navy);
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
 }
 
 .hero-card .float-pill span {
@@ -1760,7 +1760,7 @@ footer {
   color: var(--navy);
   font-weight: 700;
   margin-bottom: 22px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
 }
 
 .contact-form-panel {
@@ -1775,7 +1775,7 @@ footer {
   color: var(--navy);
   font-weight: 700;
   margin-bottom: 22px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
 }
 
 .office-hours {
