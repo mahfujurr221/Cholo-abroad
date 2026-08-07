@@ -26,6 +26,18 @@
                         <div class="col-md-6">
                             <x-modern.input label="Designation (Bangla)" name="designation_bn" placeholder="Enter Designation (Bangla)" :value="old('designation_bn', $testimonial->designation_bn)"  />
                         </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Country Name" name="country_name" placeholder="Enter Country Name" :value="old('country_name', $testimonial->country_name)"  />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Past School / College" name="past_school" placeholder="Enter Past School" :value="old('past_school', $testimonial->past_school)"  />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="Program" name="program" placeholder="Enter Program (e.g. Bachelor of Business)" :value="old('program', $testimonial->program)"  />
+                        </div>
+                        <div class="col-md-6">
+                            <x-modern.input label="University" name="university" placeholder="Enter University" :value="old('university', $testimonial->university)"  />
+                        </div>
                         <div class="col-md-12">
                             <x-modern.input type="textarea" label="Quote" name="quote" placeholder="Enter Quote" :value="old('quote', $testimonial->quote)" rows="3" required />
                         </div>

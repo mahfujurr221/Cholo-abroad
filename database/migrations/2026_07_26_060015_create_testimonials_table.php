@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('name_bn', 60)->nullable();
             $table->string('designation', 60)->nullable();
             $table->string('designation_bn', 60)->nullable();
+            $table->string('country_name', 100)->nullable();
+            $table->string('past_school', 200)->nullable();
+            $table->string('program', 200)->nullable();
+            $table->string('university', 200)->nullable();
             $table->text('quote');
             $table->text('quote_bn')->nullable();
             $table->tinyInteger('rating')->default(5);

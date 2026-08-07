@@ -480,37 +480,170 @@
       @endif
     </div>
     
+    <style>
+      .new-testi-card {
+          background: #fff;
+          border-radius: 20px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+          padding: 30px;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          text-align: left;
+      }
+      .new-testi-top {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 20px;
+      }
+      .new-testi-country {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: #f8f9fa;
+          padding: 4px 12px;
+          border-radius: 20px;
+          font-size: 12px;
+          font-weight: 600;
+          color: var(--navy);
+          display: flex;
+          align-items: center;
+          gap: 6px;
+      }
+      .new-testi-avatar {
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          object-fit: cover;
+          flex-shrink: 0;
+      }
+      .new-testi-info {
+          padding-top: 20px; /* Push name down to clear absolute country badge if they collide */
+      }
+      .new-testi-info h4 {
+          font-size: 17px;
+          font-weight: 800;
+          color: var(--navy);
+          margin: 0 0 4px 0;
+      }
+      .new-testi-info p {
+          font-size: 13px;
+          color: var(--muted);
+          margin: 0;
+      }
+      .new-testi-divider {
+          height: 1px;
+          background: #f0f2f5;
+          margin: 0 -30px 20px;
+      }
+      .new-testi-middle {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 20px;
+      }
+      .new-testi-icon-wrap {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          background: #f0f6ff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--sky);
+          font-size: 24px;
+          flex-shrink: 0;
+      }
+      .new-testi-program {
+          font-size: 13px;
+          color: var(--sky);
+          font-weight: 600;
+          margin: 0 0 2px 0;
+      }
+      .new-testi-uni {
+          font-size: 15px;
+          font-weight: 700;
+          color: var(--navy);
+          margin: 0;
+      }
+      .new-testi-bottom {
+          display: flex;
+          gap: 12px;
+          align-items: flex-start;
+          flex-grow: 1;
+      }
+      .new-testi-quote-icon {
+          font-size: 32px;
+          color: var(--sky);
+          line-height: 1;
+          margin-top: -5px;
+      }
+      .new-testi-text {
+          font-size: 14px;
+          color: var(--navy);
+          line-height: 1.7;
+          margin: 0;
+      }
+    </style>
+    
     <div style="position: relative;">
       <div class="swiper testi-swiper">
         <div class="swiper-wrapper">
           @foreach($testimonials as $testi)
           <div class="swiper-slide" style="height: auto;">
-            <div class="service-card" style="display:flex; flex-direction:column; gap:16px; height:100%; cursor:default; border: 1px solid var(--sky); box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+            <div class="new-testi-card">
               
-              <div style="display:flex; align-items:center; gap:14px;">
-                <img src="{{ $testi->avatar ? asset('uploads/testimonials/' . $testi->avatar) : 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&auto=format&fit=crop' }}" alt="{{ $testi->name }}" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
-                <div>
-                  <h4 style="font-size:16px; font-weight:700; color:var(--navy); margin-bottom:4px;">{{ $testi->name }}</h4>
-                  <p style="font-size:13.5px; color:var(--muted);">{{ $testi->designation }}</p>
+              <div class="new-testi-top">
+                @if($testi->country_name)
+                <div class="new-testi-country">
+                    <i class="bx bx-globe"></i> {{ $testi->country_name }}
+                </div>
+                @endif
+                <img src="{{ $testi->avatar ? asset('uploads/testimonials/' . $testi->avatar) : 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&auto=format&fit=crop' }}" alt="{{ $testi->name }}" class="new-testi-avatar">
+                <div class="new-testi-info" style="{{ !$testi->country_name ? 'padding-top:0;' : '' }}">
+                  <h4>{{ $testi->name }}</h4>
+                  <p>{{ $testi->past_school ?? $testi->designation }}</p>
                 </div>
               </div>
 
-              <p style="font-size:14px; color:var(--muted); line-height:1.6; flex-grow:1; margin:0;">
-                @php 
-                  $fullText = strip_tags($testi->quote); 
-                  $isLong = strlen($fullText) > 120;
-                @endphp
-                @if($isLong)
-                  <span class="short-text">{{ \Illuminate\Support\Str::limit($fullText, 120) }}</span>
-                  <span class="full-text" style="display:none;">
+              <div class="new-testi-divider"></div>
+
+              @if($testi->program || $testi->university)
+              <div class="new-testi-middle">
+                <div class="new-testi-icon-wrap">
+                    <i class="bx bx-graduation"></i>
+                </div>
+                <div>
+                    @if($testi->program)<p class="new-testi-program">{{ $testi->program }}</p>@endif
+                    @if($testi->university)<h5 class="new-testi-uni">{{ $testi->university }}</h5>@endif
+                </div>
+              </div>
+              <div class="new-testi-divider"></div>
+              @endif
+
+              <div class="new-testi-bottom">
+                <div class="new-testi-quote-icon">
+                    <i class="bx bxs-quote-alt-left"></i>
+                </div>
+                <div class="new-testi-text">
+                    @php 
+                      $fullText = strip_tags($testi->quote); 
+                      $isLong = strlen($fullText) > 180;
+                    @endphp
+                    @if($isLong)
+                      <span class="short-text">{{ \Illuminate\Support\Str::limit($fullText, 180) }}</span>
+                      <span class="full-text" style="display:none;">
+                          {{ $fullText }}
+                          <a href="javascript:void(0)" onclick="var p=this.closest('.new-testi-text'); p.querySelector('.full-text').style.display='none'; p.querySelector('.short-text').style.display='inline'; p.querySelector('.see-more-btn').style.display='inline';" style="color:var(--sky); font-weight:600; font-size:13px; margin-left:4px;">See less</a>
+                      </span>
+                      <a href="javascript:void(0)" class="see-more-btn" onclick="var p=this.closest('.new-testi-text'); p.querySelector('.short-text').style.display='none'; p.querySelector('.full-text').style.display='inline'; this.style.display='none';" style="color:var(--sky); font-weight:600; font-size:13px; margin-left:4px;">See more</a>
+                    @else
                       {{ $fullText }}
-                      <a href="javascript:void(0)" onclick="var p=this.closest('p'); p.querySelector('.full-text').style.display='none'; p.querySelector('.short-text').style.display='inline'; p.querySelector('.see-more-btn').style.display='inline';" style="color:var(--sky); font-weight:600; font-size:13px; margin-left:4px;">See less</a>
-                  </span>
-                  <a href="javascript:void(0)" class="see-more-btn" onclick="var p=this.closest('p'); p.querySelector('.short-text').style.display='none'; p.querySelector('.full-text').style.display='inline'; this.style.display='none';" style="color:var(--sky); font-weight:600; font-size:13px; margin-left:4px;">See more</a>
-                @else
-                  {{ $fullText }}
-                @endif
-              </p>
+                    @endif
+                </div>
+              </div>
 
             </div>
           </div>
