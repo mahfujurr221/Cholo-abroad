@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page-hero">
-  {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">About</span></div> --}}
+
 
   <h1>{!! setting()->about_title ?? 'We\'ve filed the paperwork <span style="color:var(--sky)">so you don\'t have to</span>' !!}</h1>
   <p>{!! setting()->about_subtitle ?? $about->mission ?? 'Cholo Abroad started with one frustration: visa consulting in Bangladesh was slow, opaque, and split across too many hands. We built the counsellor-owns-the-file model to fix that.' !!}</p>
@@ -63,17 +63,17 @@
     </div>
     <div class="mission-vision-grid">
       @if($about->mission)
-      <div style="background:#fff; border-radius:20px; padding:36px; border:1px solid var(--line); position:relative;">
-        <div style="font-family:'Poppins',sans-serif; font-size:28px; font-weight:800; color:var(--gold); margin-bottom:14px;">01</div>
-        <h3 style="font-size:20px; color:var(--navy); font-weight:700; margin-bottom:12px;">Our Mission</h3>
-        <p style="color:var(--muted); line-height:1.7; font-size:15px;">{{ $about->mission }}</p>
+      <div class="mv-box">
+        <div class="mv-num gold">01</div>
+        <h3>Our Mission</h3>
+        <p>{!! nl2br(e($about->mission)) !!}</p>
       </div>
       @endif
       @if($about->vision)
-      <div style="background:#fff; border-radius:20px; padding:36px; border:1px solid var(--line); position:relative;">
-        <div style="font-family:'Poppins',sans-serif; font-size:28px; font-weight:800; color:var(--sky); margin-bottom:14px;">02</div>
-        <h3 style="font-size:20px; color:var(--navy); font-weight:700; margin-bottom:12px;">Our Vision</h3>
-        <p style="color:var(--muted); line-height:1.7; font-size:15px;">{{ $about->vision }}</p>
+      <div class="mv-box">
+        <div class="mv-num sky">02</div>
+        <h3>Our Vision</h3>
+        <p>{!! nl2br(e($about->vision)) !!}</p>
       </div>
       @endif
     </div>

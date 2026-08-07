@@ -4,28 +4,7 @@
 
 @push('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<style>
-  .hero-swiper { width: 100%; overflow: hidden; position: relative; }
-  .testi-swiper { width: 100%; overflow: hidden; padding-bottom: 40px; position: relative; }
-  .swiper-pagination-bullet-active { background: var(--sky); }
-  .hero-swiper .swiper-pagination { bottom: 10px; }
-  /* About preview */
-  .about-preview{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
-  .about-preview .visual{position:relative; height:420px;}
-  .about-preview .frame{position:absolute; inset:24px; border-radius:20px; overflow:hidden;}
-  .about-preview .frame img{width:100%;height:100%;object-fit:cover;}
-  .about-preview h2{font-size:34px; color:var(--navy); font-weight:800; letter-spacing:-0.5px; margin-bottom:16px;}
-  .about-preview p{color:var(--muted); font-size:15.5px; line-height:1.7; margin-bottom:12px;}
-  .mv-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px;}
-  .mv-card{background:var(--bg); border-radius:14px; padding:20px; border:1px solid var(--line);}
-  .mv-card .label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--sky); margin-bottom:6px;}
-  .mv-card p{font-size:13.5px; color:var(--muted); line-height:1.6; margin:0;}
-  @media(max-width:980px){
-    .about-preview{grid-template-columns:1fr;}
-    .about-preview .visual{height:280px;}
-    .mv-grid{grid-template-columns:1fr;}
-  }
-</style>
+
 @endpush
 
 @section('content')
@@ -45,11 +24,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
           </div>
-          {{-- <div class="hero-stats">
-            <div class="stat"><b>96%</b><span>Visa approval rate</span></div>
-            <div class="stat"><b>{{ $countries->count() }}+</b><span>Destination countries</span></div>
-            <div class="stat"><b>12k+</b><span>Applications filed</span></div>
-          </div> --}}
+
         </div>
 
         <div class="hero-visual">
@@ -78,28 +53,7 @@
 </div>
 @endif
 
-<!-- STRIP -->
-{{-- <div class="strip">
-  <div class="strip-inner">
-    <span>Visa-approved destinations</span>
-    <div class="flags-row">
-      @foreach($countries as $country)
-          <div>
-            <span class="fdot" style="background:var(--sky)">
-              @if($country->flag_icon)
-                @if(preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $country->flag_icon))
-                  <img src="{{ asset('uploads/countries/' . $country->flag_icon) }}" style="width: 14px; height: 14px; object-fit: cover; border-radius: 50%;">
-                @else
-                  {{ $country->flag_icon }}
-                @endif
-              @endif
-            </span>
-            {{ $country->name }}
-          </div>
-      @endforeach
-    </div>
-  </div>
-</div> --}}
+
 
 <!-- COUNTRIES -->
 <section class="sec" id="countries" style="background:#ffffff;">

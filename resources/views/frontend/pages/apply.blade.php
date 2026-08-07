@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page-hero">
-  {{-- <div class="breadcrumb"><a href="{{ route('frontend.home') }}">Home</a> / <span class="cur">Apply now</span></div> --}}
+
 
   <h1>Let's lock in your <span style="color:var(--sky)">country</span></h1>
   <p>Three short steps. A counsellor reviews your form and calls you within one business day.</p>
@@ -17,7 +17,7 @@
 
       <form id="applyForm">
         @csrf
-        <div class="form-step active" style="display: block;">
+        <div class="form-step active">
           <h2 style="font-size:22px; color:var(--navy); margin:10px 0 24px;">Send us an inquiry</h2>
           
           <div class="form-row">

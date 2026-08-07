@@ -3095,4 +3095,44 @@ footer {
   .ac-nav-next {
     display: none !important;
   }
+}/* --- Page Specific Styles --- */
+/* Hero and Testimonial Swiper */
+.hero-swiper { width: 100%; overflow: hidden; position: relative; }
+.testi-swiper { width: 100%; overflow: hidden; padding-bottom: 40px; position: relative; }
+.swiper-pagination-bullet-active { background: var(--sky); }
+.hero-swiper .swiper-pagination { bottom: 10px; }
+
+/* About preview */
+.about-preview { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+.about-preview .visual { position:relative; height:420px; }
+.about-preview .frame { position:absolute; inset:24px; border-radius:20px; overflow:hidden; }
+.about-preview .frame img { width:100%; height:100%; object-fit:cover; }
+.about-preview h2 { font-size:34px; color:var(--navy); font-weight:800; letter-spacing:-0.5px; margin-bottom:16px; }
+.about-preview p { color:var(--muted); font-size:15.5px; line-height:1.7; margin-bottom:12px; }
+
+/* Mission Vision Grid in Home */
+.mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px; }
+.mv-card { background:var(--bg); border-radius:14px; padding:20px; border:1px solid var(--line); }
+.mv-card .label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--sky); margin-bottom:6px; }
+.mv-card p { font-size:13.5px; color:var(--muted); line-height:1.6; margin:0; }
+
+@media(max-width:980px){
+  .about-preview { grid-template-columns:1fr; }
+  .about-preview .visual { height:280px; }
+  .mv-grid { grid-template-columns:1fr; }
+}
+/* Mission Vision Box (About Page) */
+.mv-box { background:#fff; border-radius:20px; padding:36px; border:1px solid var(--line); position:relative; }
+.mv-box .mv-num { font-family:'Poppins',sans-serif; font-size:28px; font-weight:800; margin-bottom:14px; }
+.mv-box .mv-num.gold { color:var(--gold); }
+.mv-box .mv-num.sky { color:var(--sky); }
+.mv-box h3 { font-size:20px; color:var(--navy); font-weight:700; margin-bottom:12px; }
+.mv-box p { color:var(--muted); line-height:1.7; font-size:15px; }
+.foot-contact { justify-self: end; }
+@media (max-width: 980px) {
+  .foot-contact { justify-self: start; }
+  .foot-col a { word-break: break-word; white-space: normal; }
+}
+@media (max-width: 980px) {
+  .foot-logo img { max-height: 50px; }
 }

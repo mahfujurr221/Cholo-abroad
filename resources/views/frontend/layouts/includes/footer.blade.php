@@ -20,7 +20,7 @@
       </div>
     </div>
     
-    <div class="foot-col" style="justify-self: end;">
+    <div class="foot-col foot-contact">
       <h4>Get in touch</h4>
       <a href="{{ route('frontend.contact') }}" style="display:flex; gap:10px;"><i class="bx bxs-map" style="color:var(--sky); margin-top:4px; font-size:16px;"></i>{{ setting()->address ?? 'Uttara, Dhaka, Bangladesh' }}</a>
       <a href="tel:{{ setting()->phone }}" style="display:flex; gap:10px;"><i class="bx bxs-phone" style="color:var(--sky); margin-top:4px; font-size:16px;"></i>{{ setting()->phone ?? '+880 1XXX-XXXXXX' }}</a>
