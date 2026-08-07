@@ -173,29 +173,165 @@
 <!-- PROCESS -->
 <section class="sec">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>{!! setting()->process_title ?? "From first call to boarding pass" !!}</h2>
-      <p>{!! setting()->process_subtitle ?? "With PFEC Global by your side, you can make the whole process a breeze!" !!}</p>
+    <div class="sec-head" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+      <h2 style="margin: 0; white-space: nowrap;">{!! setting()->process_title ?? "From first call to boarding pass" !!}</h2>
+      <p style="margin: 0; text-align: right; max-width: 600px;">{!! setting()->process_subtitle ?? "With PFEC Global by your side, you can make the whole process a breeze!" !!}</p>
     </div>
     
-    <div class="roadmap-container">
+    <style>
+      .new-steps-container {
+          display: flex;
+          align-items: stretch;
+          justify-content: center;
+          gap: 0;
+          margin-top: 60px;
+          padding: 20px 0;
+          flex-wrap: nowrap;
+      }
+      .new-step-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 0;
+          flex: 1;
+      }
+      .new-step-card {
+          background: #fff;
+          border-radius: 16px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+          position: relative;
+          flex: 1;
+          min-width: 0;
+          min-height: 250px;
+          padding: 35px 12px 20px;
+          text-align: center;
+          border-bottom: 4px solid var(--step-color);
+          display: flex;
+          flex-direction: column;
+          z-index: 1;
+      }
+      .new-step-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 60px;
+          height: 60px;
+          border-top: 3px solid var(--step-color);
+          border-left: 3px solid var(--step-color);
+          border-top-left-radius: 16px;
+          pointer-events: none;
+      }
+      .new-step-icon {
+          position: absolute;
+          top: -24px;
+          left: 15px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          font-size: 24px;
+          box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      }
+      .new-step-number {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          font-size: 18px;
+          font-weight: 800;
+          color: var(--navy);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+      .new-step-number::after {
+          content: '';
+          width: 100%;
+          height: 3px;
+          background: var(--sky);
+          margin-top: 2px;
+          border-radius: 2px;
+      }
+      .new-step-title {
+          font-size: 14px;
+          font-weight: 700;
+          color: var(--navy);
+          margin: 10px 0;
+          line-height: 1.4;
+      }
+      .new-step-divider {
+          width: 60%;
+          height: 1px;
+          background: #e9ecf1;
+          margin: 0 auto 12px;
+      }
+      .new-step-desc {
+          font-size: 12px;
+          color: var(--muted);
+          line-height: 1.6;
+          margin-bottom: 0;
+      }
+      .new-step-arrow {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: #fff;
+          border: 1.5px solid var(--sky);
+          box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--sky);
+          font-size: 18px;
+          flex-shrink: 0;
+          margin: 0 -12px; /* Negative margin pulls cards closer and overlaps them */
+          z-index: 2;
+          position: relative;
+      }
       
+      @media(max-width: 991px) {
+          .new-steps-container {
+              flex-wrap: wrap;
+              gap: 10px; /* Reduced space between step wrappers on mobile */
+          }
+          .new-step-wrapper {
+              flex-direction: column;
+              flex: 0 0 100%;
+              gap: 0;
+          }
+          .new-step-arrow {
+              transform: rotate(90deg);
+              margin: -12px auto 0; /* Overlap only top, leave bottom alone */
+          }
+      }
+    </style>
+    
+    <div class="new-steps-container">
       @foreach($processes as $index => $process)
-      <div class="roadmap-step">
-          <div class="rs-box">
-             <div class="rs-icon-wrap">
-                 <div class="rs-icon-bg" style="{{ $process->color ? 'background: linear-gradient(135deg, '.$process->color.', '.$process->color.'d9);' : '' }}"></div>
+      <div class="new-step-wrapper">
+          <div class="new-step-card" style="--step-color: {{ $process->color ?: 'var(--sky)' }};">
+             <div class="new-step-icon" style="{{ $process->color ? 'background: '.$process->color.'; box-shadow: 0 6px 12px '.$process->color.'66;' : 'background: var(--sky); box-shadow: 0 6px 12px rgba(0,0,0,0.1);' }}">
                  <i class="{{ $process->icon ?: 'bx bx-star' }}"></i>
              </div>
-             <div class="rs-content">
-                 <div class="rs-step-label" style="{{ $process->color ? 'color: '.$process->color.';' : '' }}">Step {{ $process->step_number }}</div>
-                 <h3 title="{{ $process->title }}">{{ \Illuminate\Support\Str::limit($process->title, 25, '...') }}</h3>
-                 <p>{!! strip_tags($process->description) !!}</p>
+             <div class="new-step-number">
+                 {{ str_pad($process->step_number, 2, '0', STR_PAD_LEFT) }}
+                 <span style="display:block; width:100%; height:3px; border-radius:2px; margin-top:2px; {{ $process->color ? 'background: '.$process->color.';' : 'background: var(--sky);' }}"></span>
              </div>
+             
+             <h3 class="new-step-title" title="{{ $process->title }}">{{ $process->title }}</h3>
+             <div class="new-step-divider"></div>
+             <div class="new-step-desc">{!! strip_tags($process->description) !!}</div>
           </div>
+          
+          @if(!$loop->last)
+          <div class="new-step-arrow">
+              <i class="bx bx-chevron-right"></i>
+          </div>
+          @endif
       </div>
       @endforeach
-      
     </div>
   </div>
 </section>
